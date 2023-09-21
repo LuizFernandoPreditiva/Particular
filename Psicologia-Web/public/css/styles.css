@@ -1,0 +1,74 @@
+.fundo {
+    background: linear-gradient(to bottom, #e08d6b, #d25c2e);
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-centered {
+    width: 200px;
+    height: 200px;
+
+}
+
+.menuLogin{
+    text-align: end;
+    padding-right: 20px;
+    font-size: 20px;
+}
+
+.containerMenuBarDeslogado{
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #000000;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.menuBarDeslogado ul{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.menuBarDeslogado li{
+    flex: 1;
+    text-align: center;
+}
+
+.menuBarDeslogado a{
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.containerMenuBarLogado{
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #000000;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.menuBarLogado ul{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.menuBarLogado li{
+    flex: 1;
+    text-align: center;
+}
+
+.menuBarLogado a{
+    text-decoration: none;
+    font-size: 30px;
+}
