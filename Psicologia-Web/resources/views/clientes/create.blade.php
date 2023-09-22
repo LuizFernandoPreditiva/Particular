@@ -19,33 +19,20 @@
     @component("components.menuLogado")
     @endcomponent
 
-<h1>Clientes:</h1>
+<h1>Novo cliente:</h1>
 
-<table id="TabelaClientes" border=1 align="center">
-    <h3><a href="{{route('clientes.create')}}">Criar novo</a></h3>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Visualizar</th>
-            <th>Serviços</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($clientes as $cl):
-        ?>
-        <tr>
-            <td><?= $cl->nome ?></td>
-            <td><?= $cl->telefone ?></td>
-            <td><a href="{{route('clientes.show', $cl->id )}}">Visualizar</a></td>
-            <td><a href="">X</a></td>
-        </tr>
-        <?php
-            endforeach;
-        ?>
-    </tbody>
-</table>
+<form action="{{route('clientes.store')}}" method="post">
+    @csrf
+
+    Nome: <input type="text" name="nome"><br><br>
+    CPF: <input type="text" name="cpf"><br><br>
+    Telefone: <input type="text" name="telefone"><br><br>
+    Endereco: <input type="text" name="endereco"><br><br>
+    Cidade: <input type="text" name="cidade"><br><br>
+    Estado: <input type="text" name="estado"><br><br>
+
+    <input  type="submit" value="Cadastrar">
+</form>
 
 </body>
 

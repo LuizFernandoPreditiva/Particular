@@ -10,21 +10,14 @@
 </head>
 <body class="fundo">
 
+    @component("components.menulogout")
+    @endcomponent
+
     @component("components.logo")
     @endcomponent
 
     @component("components.menuLogado")
     @endcomponent
-
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-
-        <x-responsive-nav-link :href="route('logout')"
-            onclick="event.preventDefault();
-            this.closest('form').submit();">
-            {{ __('Log Out') }}
-        </x-responsive-nav-link>
-    </form>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

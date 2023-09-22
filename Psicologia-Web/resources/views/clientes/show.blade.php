@@ -19,34 +19,22 @@
     @component("components.menuLogado")
     @endcomponent
 
-<h1>Clientes:</h1>
+    <h1>Cliente:</h1>
+    ID: {{$cliente->id}}<br>
+    Nome: {{$cliente->nome}}<br>
+    CPF: {{$cliente->cpf}}<br>
+    Telefone: {{$cliente->telefone}}<br>
+    Endereco: {{$cliente->endereco}}<br>
+    Cidade: {{$cliente->cidade}}<br>
+    Estado: {{$cliente->estado}}<br>
 
-<table id="TabelaClientes" border=1 align="center">
-    <h3><a href="{{route('clientes.create')}}">Criar novo</a></h3>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Visualizar</th>
-            <th>Serviços</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($clientes as $cl):
-        ?>
-        <tr>
-            <td><?= $cl->nome ?></td>
-            <td><?= $cl->telefone ?></td>
-            <td><a href="{{route('clientes.show', $cl->id )}}">Visualizar</a></td>
-            <td><a href="">X</a></td>
-        </tr>
-        <?php
-            endforeach;
-        ?>
-    </tbody>
-</table>
+    <form action="{{route('clientes.destroy', $cliente)}}" method="post">
+        <a class="btn btn-primary" href="{{route('clientes.edit', $cliente->id )}}" role="button">Alterar</a>
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-primary">Deletar</button>
+    </form>
 
-</body>
+    </body>
 
 </html>
