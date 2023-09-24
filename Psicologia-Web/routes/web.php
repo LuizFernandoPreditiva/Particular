@@ -33,6 +33,6 @@ require __DIR__.'/auth.php';
 
 Route::get('/logado', function () {
     return view('logado');
-})->middleware(['auth']);
+})->middleware(['auth'])->name('logado');
 
 Route::resource('/clientes', ClientesController::class)->middleware(['auth']);

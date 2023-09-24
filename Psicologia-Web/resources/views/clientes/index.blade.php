@@ -19,33 +19,32 @@
     @component("components.menuLogado")
     @endcomponent
 
-<h1>Clientes:</h1>
-
-<table id="TabelaClientes" border=1 align="center">
     <h3><a href="{{route('clientes.create')}}">Criar novo</a></h3>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Visualizar</th>
-            <th>Serviços</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($clientes as $cl):
-        ?>
-        <tr>
-            <td><?= $cl->nome ?></td>
-            <td><?= $cl->telefone ?></td>
-            <td><a href="{{route('clientes.show', $cl->id )}}">Visualizar</a></td>
-            <td><a href="">X</a></td>
-        </tr>
-        <?php
-            endforeach;
-        ?>
-    </tbody>
-</table>
+
+    <table id="TabelaClientes" border=1 align="center">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Visualizar</th>
+                <th>Serviços</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach($clientes as $cl):
+            ?>
+            <tr>
+                <td><?= $cl->nome ?></td>
+                <td><?= $cl->telefone ?></td>
+                <td><a href="{{route('clientes.show', $cl->id )}}">Visualizar</a></td>
+                <td><a href="">X</a></td>
+            </tr>
+            <?php
+                endforeach;
+            ?>
+        </tbody>
+    </table>
 
 </body>
 
