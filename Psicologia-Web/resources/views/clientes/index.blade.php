@@ -19,8 +19,6 @@
     @component("components.menuLogado")
     @endcomponent
 
-    <h3><a href="{{route('clientes.create')}}">Criar novo</a></h3>
-
     <table id="TabelaClientes" border=1 align="center">
         <thead>
             <tr>
