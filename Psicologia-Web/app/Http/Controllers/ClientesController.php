@@ -102,4 +102,26 @@ class ClientesController extends Controller
         return redirect()->route('clientes.index', ['clientes' => $clientes]);
 
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pesquisar()
+    {
+        return view('clientes.pesquisar');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function buscar($nome)
+    {
+        return view('clientes.pesquisar');
+    }
+
+
 }

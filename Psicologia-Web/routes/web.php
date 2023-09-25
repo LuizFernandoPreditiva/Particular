@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/home', function () {
+    return view('index');
+});
+
 /*
 Route::get('/welcome', function () {
     return view('welcome');
@@ -36,3 +40,7 @@ Route::get('/logado', function () {
 })->middleware(['auth'])->name('logado');
 
 Route::resource('/clientes', ClientesController::class)->middleware(['auth']);
+
+Route::get('/clientes/pesquisar/nome', [ClientesController::class, 'pesquisar'])->name('clientes.pesquisar');
+
+Route::get('/clientes/buscar/{nome}', [ClientesController::class, 'buscar'])->name('clientes.buscar')->middleware(['auth']);

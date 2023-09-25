@@ -8,8 +8,9 @@
             Clientes
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="{{route('clientes.index')}}">Lista</a></li>
-          <li><a class="dropdown-item" href="{{route('clientes.create')}}">Novo</a></li>
+            <li><a class="dropdown-item" href="{{route('clientes.index')}}">Lista</a></li>
+            <li><a class="dropdown-item" href="{{route('clientes.create')}}">Novo</a></li>
+            <li><a class="dropdown-item" href="{{route('clientes.pesquisar')}}">Buscar</a></li>
         </ul>
     </div>
 
