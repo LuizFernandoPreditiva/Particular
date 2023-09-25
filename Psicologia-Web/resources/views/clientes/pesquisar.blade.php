@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <title>Clientes</title>
+    <title>Pesquisar pacientes</title>
 </head>
 <body class="fundo">
 
@@ -21,12 +21,12 @@
 
 <h1>Pesquise pelo Nome:</h1>
 
-<form action="{{route('clientes.store')}}" method="post">
+<form action="{{route('clientes.buscar')}}" method="post">
     @csrf
 
     Nome: <input type="text" name="nome"><br><br>
 
-    <input  type="submit" value="Cadastrar">
+    <input  type="submit" value="Buscar">
 </form>
 
 </body>

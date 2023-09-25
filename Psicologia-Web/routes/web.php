@@ -43,4 +43,4 @@ Route::resource('/clientes', ClientesController::class)->middleware(['auth']);
 
 Route::get('/clientes/pesquisar/nome', [ClientesController::class, 'pesquisar'])->name('clientes.pesquisar');
 
-Route::get('/clientes/buscar/{nome}', [ClientesController::class, 'buscar'])->name('clientes.buscar')->middleware(['auth']);
+Route::post('/clientes/buscar', [ClientesController::class, 'buscar'])->name('clientes.buscar')->middleware(['auth']);

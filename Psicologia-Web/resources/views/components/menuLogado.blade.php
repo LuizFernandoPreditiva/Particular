@@ -5,7 +5,7 @@
 
     <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="{{route('clientes.index')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Clientes
+            Pacientes
         </a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{route('clientes.index')}}">Lista</a></li>

@@ -114,13 +114,18 @@ class ClientesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function buscar($nome)
+    public function buscar(Request $request)
     {
-        return view('clientes.pesquisar');
+        $nome = $request->input('nome');
+
+        $clientes = Clientes::where('nome', 'like', '%' . $nome . '%')->get();
+
+        return view('clientes.busca', ['clientes' => $clientes]);
     }
 
 
