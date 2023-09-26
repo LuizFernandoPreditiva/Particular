@@ -11,6 +11,10 @@
             <li><a class="dropdown-item" href="{{route('clientes.index')}}">Lista</a></li>
             <li><a class="dropdown-item" href="{{route('clientes.create')}}">Novo</a></li>
             <li><a class="dropdown-item" href="{{route('clientes.pesquisar')}}">Buscar</a></li>
+            <hr>
+            <li><a class="dropdown-item" href="{{route('clientes.ativo')}}">Atendimentos</a></li>
+            <li><a class="dropdown-item" href="{{route('clientes.alta')}}">Alta</a></li>
+            <li><a class="dropdown-item" href="{{route('clientes.inativo')}}">Desistencia</a></li>
         </ul>
     </div>
 

@@ -131,5 +131,29 @@ class ClientesController extends Controller
         return view('clientes.busca', ['clientes' => $clientes]);
     }
 
+    public function ativo()
+    {
+        $clientes = Clientes::where('status', 'ativo')->get();
+
+        return view('clientes.ativo', ['clientes' => $clientes]);
+
+    }
+
+    public function alta()
+    {
+        $clientes = Clientes::where('status', 'alta')->get();
+
+        return view('clientes.alta', ['clientes' => $clientes]);
+
+    }
+
+    public function inativo()
+    {
+        $clientes = Clientes::where('status', 'inativo')->get();
+
+        return view('clientes.inativo', ['clientes' => $clientes]);
+
+    }
+
 
 }

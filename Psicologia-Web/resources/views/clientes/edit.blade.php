@@ -28,6 +28,12 @@
         Endereco: <input type="text" name="endereco" value="{{$cliente->endereco}}"><br><br>
         Cidade: <input type="text" name="cidade" value="{{$cliente->cidade}}"><br><br>
         Estado: <input type="text" name="estado" value="{{$cliente->estado}}"><br><br>
+        Status:
+            <select name="status">
+                <option value="ativo">Em atendimento</option>
+                <option value="alta">De alta</option>
+                <option value="inativo">Desistencia</option>
+            </select><br><br>
 
         <input  type="submit" class="btn btn-primary" value="Salvar">
     </form>

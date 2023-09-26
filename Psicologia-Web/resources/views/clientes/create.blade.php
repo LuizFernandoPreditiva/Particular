@@ -33,7 +33,7 @@
     Status:
     <select name="status">
         <option value="ativo">Em atendimento</option>
-        <option value="alta">Em alta</option>
+        <option value="alta">De alta</option>
         <option value="inativo">Desistencia</option>
     </select><br><br>
 

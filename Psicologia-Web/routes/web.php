@@ -44,3 +44,9 @@ Route::resource('/clientes', ClientesController::class)->middleware(['auth']);
 Route::get('/clientes/pesquisar/nome', [ClientesController::class, 'pesquisar'])->name('clientes.pesquisar');
 
 Route::post('/clientes/buscar', [ClientesController::class, 'buscar'])->name('clientes.buscar')->middleware(['auth']);
+
+Route::get('/clientes/status/ativo', [ClientesController::class, 'ativo'])->name('clientes.ativo');
+
+Route::get('/clientes/status/alta', [ClientesController::class, 'alta'])->name('clientes.alta');
+
+Route::get('/clientes/status/inativo', [ClientesController::class, 'inativo'])->name('clientes.inativo');
