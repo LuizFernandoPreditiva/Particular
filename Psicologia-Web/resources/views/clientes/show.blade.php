@@ -27,6 +27,10 @@
     Endereco: {{$cliente->endereco}}<br>
     Cidade: {{$cliente->cidade}}<br>
     Estado: {{$cliente->estado}}<br>
+    status: {{$cliente->status}}<br>
+    Atendimentos: {{$cliente->atendimentos}}<br>
+    Faltas: {{$cliente->faltas}}<br>
+    Saldo: {{$cliente->saldo}}<br>
 
     <form action="{{route('clientes.destroy', $cliente)}}" method="post">
         <a class="btn btn-primary" href="{{route('clientes.edit', $cliente->id )}}" role="button">Alterar</a>

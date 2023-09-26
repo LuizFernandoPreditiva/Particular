@@ -15,6 +15,10 @@ class Clientes extends Model
         'telefone',
         'endereco',
         'cidade',
-        'estado'
+        'estado',
+        'saldo',
+        'atendimentos',
+        'faltas',
+        'status'
     ];
 }

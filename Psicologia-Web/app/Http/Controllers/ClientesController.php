@@ -37,6 +37,9 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data['saldo'] = 0;
+        $data['atendimentos'] = 0;
+        $data['faltas'] = 0;
 
         Clientes::create($data);
 

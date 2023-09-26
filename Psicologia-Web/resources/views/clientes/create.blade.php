@@ -30,6 +30,12 @@
     Endereco: <input type="text" name="endereco"><br><br>
     Cidade: <input type="text" name="cidade"><br><br>
     Estado: <input type="text" name="estado"><br><br>
+    Status:
+    <select name="status">
+        <option value="ativo">Em atendimento</option>
+        <option value="alta">Em alta</option>
+        <option value="inativo">Desistencia</option>
+    </select><br><br>
 
     <input  type="submit" value="Cadastrar">
 </form>
@@ -37,3 +43,4 @@
 </body>
 
 </html>
+
