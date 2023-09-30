@@ -37,7 +37,17 @@ class PagamentosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        Pagamentos::create($data);
+        $cliente = Clientes::findOrFail($data['cliente_id']);
+
+        $cliente->saldo += $data['valor'];
+        $cliente->update($data);
+
+        //$clientes = Clientes::all();
+        //return view("clientes.index", ['clientes' => $clientes]);
+        return redirect()->route('clientes.show', ['cliente' => $cliente]);
     }
 
     /**
