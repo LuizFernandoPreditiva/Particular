@@ -55,3 +55,7 @@ Route::get('/clientes/status/inativo', [ClientesController::class, 'inativo'])->
 Route::get('/pagamentos/create/{id}', [PagamentosController::class, 'create'])->name('pagamentos.novo')->middleware(['auth']);
 
 Route::resource('/pagamentos', PagamentosController::class)->middleware(['auth']);
+
+Route::get('/pagamentos/pesquisar/nome', [PagamentosController::class, 'pesquisar'])->name('pagamentos.pesquisar');
+
+Route::post('/pagamentos/buscar', [PagamentosController::class, 'buscar'])->name('pagamentos.buscar')->middleware(['auth']);

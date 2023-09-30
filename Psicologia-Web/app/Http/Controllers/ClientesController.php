@@ -84,8 +84,9 @@ class ClientesController extends Controller
         $data = $request->all();
         $cliente->update($data);
 
-        $clientes = Clientes::all();
-        return redirect()->route('clientes.index', ['clientes' => $clientes]);
+        //$clientes = Clientes::all();
+        //return redirect()->route('clientes.index', ['clientes' => $clientes]);
+        return redirect()->route('clientes.show', ['cliente' => $cliente]);
 
     }
 
