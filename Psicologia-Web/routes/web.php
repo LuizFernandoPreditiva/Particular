@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\PagamentosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,3 +51,7 @@ Route::get('/clientes/status/ativo', [ClientesController::class, 'ativo'])->name
 Route::get('/clientes/status/alta', [ClientesController::class, 'alta'])->name('clientes.alta');
 
 Route::get('/clientes/status/inativo', [ClientesController::class, 'inativo'])->name('clientes.inativo');
+
+Route::get('/pagamentos/create/{id}', [PagamentosController::class, 'create'])->name('pagamentos.novo')->middleware(['auth']);
+
+Route::resource('/pagamentos', PagamentosController::class)->middleware(['auth']);

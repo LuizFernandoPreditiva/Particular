@@ -21,4 +21,9 @@ class Clientes extends Model
         'faltas',
         'status'
     ];
+
+    public function pagamentos(){
+        return $this->hasMany(Pagamentos::class, 'cliente_id');
+    }
+
 }

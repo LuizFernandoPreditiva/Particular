@@ -37,6 +37,7 @@
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-primary">Deletar</button>
+        <a class="btn btn-primary" href="{{route('pagamentos.novo', ['id' => $cliente->id ] )}}" role="button">Pagamentos</a>
     </form>
 
     </body>
