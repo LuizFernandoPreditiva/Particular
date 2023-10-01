@@ -105,9 +105,22 @@ class PagamentosController extends Controller
      * @param  \App\Models\Pagamentos  $pagamentos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pagamentos $pagamentos)
+    public function destroy(Pagamentos $pagamento)
     {
-        //
+        $cliente = Clientes::findOrFail($pagamento->cliente_id);
+
+        $saldo = $cliente->saldo;
+        $saldo -= $pagamento->valor;
+
+        $cliente->update([
+            'saldo' => $saldo,
+        ]);
+
+        $pagamento->delete();
+
+        $pagamentos = Pagamentos::where('cliente_id', $cliente->id)->get();
+
+        return redirect()->route('pagamentos.historico', ['cliente' => $cliente, 'pagamentos' => $pagamentos]);
     }
 
     /**
