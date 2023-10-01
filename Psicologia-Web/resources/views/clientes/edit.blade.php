@@ -22,6 +22,7 @@
     <form action="{{route('clientes.update', $cliente )}}" method="post">
         @csrf
         @method('PUT')
+
         Nome: <input type="text" name="nome" value="{{$cliente->nome}}"><br><br>
         CPF: <input type="text" name="cpf" value="{{$cliente->cpf}}"><br><br>
         Telefone: <input type="text" name="telefone" value="{{$cliente->telefone}}"><br><br>
@@ -30,9 +31,9 @@
         Estado: <input type="text" name="estado" value="{{$cliente->estado}}"><br><br>
         Status:
             <select name="status">
-                <option value="ativo">Em atendimento</option>
-                <option value="alta">De alta</option>
-                <option value="inativo">Desistencia</option>
+                <option value="ativo" @if ($cliente->status == 'ativo') selected @endif>Em atendimento</option>
+                <option value="alta" @if ($cliente->status == 'alta') selected @endif>De alta</option>
+                <option value="inativo" @if ($cliente->status == 'inativo') selected @endif>Desistencia</option>
             </select><br><br>
 
         <input  type="submit" class="btn btn-primary" value="Salvar">

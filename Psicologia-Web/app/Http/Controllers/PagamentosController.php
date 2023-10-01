@@ -67,9 +67,9 @@ class PagamentosController extends Controller
      * @param  \App\Models\Pagamentos  $pagamentos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pagamentos $pagamentos)
+    public function edit(Pagamentos $pagamento)
     {
-        //
+        return view('pagamentos.edit', compact('pagamento'));
     }
 
     /**
@@ -119,4 +119,11 @@ class PagamentosController extends Controller
 
         return view('pagamentos.busca', ['clientes' => $clientes]);
     }
+
+    public function historico(Clientes $cliente)
+    {
+        $pagamentos = Pagamentos::where('cliente_id', $cliente->id)->get();
+        return view('pagamentos.historico', ['cliente' => $cliente, 'pagamentos' => $pagamentos]);
+    }
+
 }

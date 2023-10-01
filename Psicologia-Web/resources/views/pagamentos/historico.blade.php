@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <title>Pesquisar pacientes</title>
+    <title>Paciente</title>
 </head>
 <body class="fundo">
 
@@ -19,22 +19,26 @@
     @component("components.menuLogado")
     @endcomponent
 
-    <table id="TabelaClientes" border=1 align="center">
+    <h1>Cliente:</h1>
+    ID: {{$cliente->id}}<br>
+    Nome: {{$cliente->nome}}<br><br>
+
+    <table id="TabelaHistorico" border=1 align="center">
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>Novo</th>
-                <th>Histórico</th>
+                <th>Descricao</th>
+                <th>Valor</th>
+                <th>Alterar</th>
             </tr>
         </thead>
         <tbody>
             <?php
-                foreach($clientes as $cliente):
+                foreach($pagamentos as $pagamento):
             ?>
             <tr>
-                <td><?= $cliente->nome ?></td>
-                <td><a class="btn btn-primary" href="{{route('pagamentos.novo', ['id' => $cliente->id ] )}}" role="button">X</a></td>
-                <td><a class="btn btn-primary" href="{{route('pagamentos.historico', $cliente )}}" role="button">X</a></td>
+                <td><?= $pagamento->descricao ?></td>
+                <td><?= $pagamento->valor ?></td>
+                <td><a class="btn btn-primary" href="{{route('pagamentos.edit', $pagamento->id )}}" role="button">Alterar</a></td>
             </tr>
             <?php
                 endforeach;
@@ -42,6 +46,11 @@
         </tbody>
     </table>
 
-</body>
+
+
+
+
+
+    </body>
 
 </html>

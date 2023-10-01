@@ -56,6 +56,8 @@ Route::get('/pagamentos/create/{id}', [PagamentosController::class, 'create'])->
 
 Route::resource('/pagamentos', PagamentosController::class)->middleware(['auth']);
 
-Route::get('/pagamentos/pesquisar/nome', [PagamentosController::class, 'pesquisar'])->name('pagamentos.pesquisar');
+Route::get('/pagamentos/pesquisar/nome', [PagamentosController::class, 'pesquisar'])->name('pagamentos.pesquisar')->middleware(['auth']);
 
 Route::post('/pagamentos/buscar', [PagamentosController::class, 'buscar'])->name('pagamentos.buscar')->middleware(['auth']);
+
+Route::get('/pagamentos/historico/{cliente}', [PagamentosController::class, 'historico'])->name('pagamentos.historico')->middleware(['auth']);

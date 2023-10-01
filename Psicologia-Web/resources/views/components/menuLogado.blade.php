@@ -23,7 +23,7 @@
             Pagamentos
         </a>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{route('pagamentos.pesquisar')}}">Novo</a></li>
+            <li><a class="dropdown-item" href="{{route('pagamentos.pesquisar')}}">Lancar</a></li>
         </ul>
     </div>
 
