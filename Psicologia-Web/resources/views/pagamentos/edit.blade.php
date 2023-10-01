@@ -19,8 +19,11 @@
     @component("components.menuLogado")
     @endcomponent
 
-    <form action="{{route('pagamentos.store')}}" method="post">
+    <form action="{{route('pagamentos.update', $pagamento)}}" method="post">
         @csrf
+        @method('PUT')
+
+        <input type="hidden" name="cliente_id" value="{{$pagamento->cliente_id}}">
 
         Descricao: <input type="text" name="descricao" value="{{$pagamento->descricao}}"><br><br>
         Forma:
@@ -40,7 +43,7 @@
         </select><br><br>
         Valor: <input type="number" name="valor" value="{{$pagamento->valor}}"><br><br>
 
-        <input  type="submit" value="Cadastrar">
+        <input  type="submit" value="Alterar">
     </form>
 </body>
 </html>

@@ -79,9 +79,24 @@ class PagamentosController extends Controller
      * @param  \App\Models\Pagamentos  $pagamentos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pagamentos $pagamentos)
+    public function update(Request $request, Pagamentos $pagamento)
     {
-        //
+        $data = $request->all();
+        $cliente = Clientes::findOrFail($data['cliente_id']);
+
+        $saldo = $cliente['saldo'];
+        $saldo -= $pagamento->valor;
+        $saldo += $data['valor'];
+
+        $pagamento->update($data);
+
+        $cliente->update([
+            'saldo' => $saldo,
+        ]);
+
+        $pagamentos = Pagamentos::where('cliente_id', $data['cliente_id'])->get();
+
+        return view('pagamentos.historico', ['cliente' => $cliente, 'pagamentos' => $pagamentos]);
     }
 
     /**

@@ -21,7 +21,8 @@
 
     <h1>Cliente:</h1>
     ID: {{$cliente->id}}<br>
-    Nome: {{$cliente->nome}}<br><br>
+    Nome: {{$cliente->nome}}<br>
+    Saldo: R${{$cliente->saldo}}<br><br>
 
     <table id="TabelaHistorico" border=1 align="center">
         <thead>
