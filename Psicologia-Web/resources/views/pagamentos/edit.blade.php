@@ -25,7 +25,7 @@
 
         <input type="hidden" name="cliente_id" value="{{$pagamento->cliente_id}}">
 
-        Descricao: <input type="text" name="descricao" value="{{$pagamento->descricao}}"><br><br>
+        Descricao: <input type="text" name="descricao" value="{{$pagamento->descricao}}" required><br><br>
         Forma:
         <select name="forma">
             <option value="pix" @if ($pagamento->forma == 'pix') selected @endif>Pix</option>
@@ -41,7 +41,7 @@
             <option value="3" @if ($pagamento->parcelas == 3) selected @endif>3</option>
             <option value="4" @if ($pagamento->parcelas == 4) selected @endif>4</option>
         </select><br><br>
-        Valor: <input type="number" name="valor" value="{{$pagamento->valor}}"><br><br>
+        Valor: <input type="number" name="valor" value="{{$pagamento->valor}}" required><br><br>
 
         <input  type="submit" value="Alterar">
     </form>

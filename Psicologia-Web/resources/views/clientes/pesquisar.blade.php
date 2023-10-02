@@ -24,7 +24,7 @@
 <form action="{{route('clientes.buscar')}}" method="post">
     @csrf
 
-    Nome: <input type="text" name="nome"><br><br>
+    Nome: <input type="text" name="nome" required><br><br>
 
     <input  type="submit" value="Buscar">
 </form>

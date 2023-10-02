@@ -24,12 +24,12 @@
 <form action="{{route('clientes.store')}}" method="post">
     @csrf
 
-    Nome: <input type="text" name="nome"><br><br>
-    CPF: <input type="text" name="cpf"><br><br>
-    Telefone: <input type="text" name="telefone"><br><br>
-    Endereco: <input type="text" name="endereco"><br><br>
-    Cidade: <input type="text" name="cidade"><br><br>
-    Estado: <input type="text" name="estado"><br><br>
+    Nome: <input type="text" name="nome" required><br><br>
+    CPF: <input type="text" name="cpf" required><br><br>
+    Telefone: <input type="text" name="telefone" required><br><br>
+    Endereco: <input type="text" name="endereco" required><br><br>
+    Cidade: <input type="text" name="cidade" required><br><br>
+    Estado: <input type="text" name="estado" required><br><br>
     Status:
     <select name="status">
         <option value="ativo">Em atendimento</option>

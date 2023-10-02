@@ -26,7 +26,7 @@
 
         <input type="hidden" name="cliente_id" value="{{$cliente->id}}">
 
-        Descricao: <input type="text" name="descricao"><br><br>
+        Descricao: <input type="text" name="descricao" required><br><br>
         Forma:
         <select name="forma">
             <option value="pix">Pix</option>
@@ -42,7 +42,7 @@
             <option value="3">3</option>
             <option value="4">4</option>
         </select><br><br>
-        Valor: <input type="number" name="valor"><br><br>
+        Valor: <input type="number" name="valor" required><br><br>
 
         <input  type="submit" value="Cadastrar">
     </form>
