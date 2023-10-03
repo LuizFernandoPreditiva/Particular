@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atendimentos;
+use App\Models\Clientes;
 use Illuminate\Http\Request;
 
 class AtendimentosController extends Controller
@@ -24,7 +25,9 @@ class AtendimentosController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Clientes::all();
+
+        return view('atendimentos.create', ['clientes' => $clientes]);
     }
 
     /**
@@ -35,7 +38,39 @@ class AtendimentosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $dataAgendado = $request->input('dataAgendamento');
+        $horaAgendado = $request->input('horaAgendamento');
+        $dataHoraAgendamento = "{$dataAgendado} {$horaAgendado}";
+
+        if($request->input('dataAtendido') == null || $request->input('horaAtendido') == null){
+            $dataHoraAtendido = null;
+        }else{
+            $dataAtendido = $request->input('dataAtendido');
+            $horaAtendido = $request->input('horaAtendido');
+            $dataHoraAtendido = "{$dataAtendido} {$horaAtendido}";
+        }
+
+
+        if($request->input('falta') == null){
+            $falta = 0;
+        }else{
+            $falta = 1;
+        }
+
+        Atendimentos::create([
+            'cliente_id' => $request->input('cliente_id'),
+            'agendamento' => $dataHoraAgendamento,
+            'atendido' => $dataHoraAtendido,
+            'duracao' => $request->input('duracao'),
+            'falta' => $falta,
+            'trabalho' => $request->input('trabalho'),
+            'resumo' => $request->input('resumo')
+        ]);
+
+        $cliente = Clientes::findOrFail($request->input('cliente_id'));
+
+        return redirect()->route('clientes.show', ['cliente' => $cliente]);
     }
 
     /**

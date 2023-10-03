@@ -32,7 +32,7 @@
             Atendimentos
         </a>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{route('atendimentos.index')}}">Novo</a></li>
+            <li><a class="dropdown-item" href="{{route('atendimentos.create')}}">Novo</a></li>
         </ul>
     </div>
 

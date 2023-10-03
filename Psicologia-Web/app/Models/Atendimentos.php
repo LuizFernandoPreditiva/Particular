@@ -12,6 +12,7 @@ class Atendimentos extends Model
     protected $fillable = [
         'cliente_id',
         'agendamento',
+        'atendido',
         'data',
         'duracao',
         'falta',
