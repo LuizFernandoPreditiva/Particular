@@ -24,6 +24,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>Registrado</th>
                 <th>Visualizar</th>
                 <th>Serviços</th>
             </tr>
@@ -35,6 +36,7 @@
             <tr>
                 <td><?= $cl->nome ?></td>
                 <td><?= $cl->telefone ?></td>
+                <td><?= date('d/m/Y', strtotime($cl->created_at)) ?></td>
                 <td><a href="{{route('clientes.show', $cl->id )}}">Visualizar</a></td>
                 <td><a href="">X</a></td>
             </tr>

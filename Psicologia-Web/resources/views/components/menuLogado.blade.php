@@ -19,11 +19,20 @@
     </div>
 
     <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="{{route('clientes.index')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="btn btn-secondary dropdown-toggle" href="{{route('pagamentos.pesquisar')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Pagamentos
         </a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{route('pagamentos.pesquisar')}}">Lancar</a></li>
+        </ul>
+    </div>
+
+    <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="{{route('atendimentos.index')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Atendimentos
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{route('atendimentos.index')}}">Novo</a></li>
         </ul>
     </div>
 

@@ -26,4 +26,8 @@ class Clientes extends Model
         return $this->hasMany(Pagamentos::class, 'cliente_id');
     }
 
+    public function atendimentos(){
+        return $this->hasMany(Atendimentos::class, 'cliente_id');
+    }
+
 }
