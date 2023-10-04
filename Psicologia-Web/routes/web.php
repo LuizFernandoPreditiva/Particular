@@ -75,4 +75,6 @@ Route::get('/pagamentos/historico/{cliente}', [PagamentosController::class, 'his
 
 Route::resource('/atendimentos', AtendimentosController::class)->middleware(['auth']);
 
+Route::get('/atendimentos/registro/{cliente}', [AtendimentosController::class, 'registro'])->name('atendimentos.registro')->middleware(['auth']);
+
 //-------------------End Atendimentos-------------------

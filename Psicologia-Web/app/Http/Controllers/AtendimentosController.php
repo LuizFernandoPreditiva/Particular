@@ -117,4 +117,10 @@ class AtendimentosController extends Controller
     {
         //
     }
+
+    public function registro(Clientes $cliente)
+    {
+        $atendimentos = Atendimentos::where('cliente_id', $cliente->id)->get();
+        return view('atendimentos.registro', ['cliente' => $cliente, 'atendimentos' => $atendimentos]);
+    }
 }

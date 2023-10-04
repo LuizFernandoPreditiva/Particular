@@ -37,8 +37,9 @@
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-primary">Deletar</button>
-        <a class="btn btn-primary" href="{{route('pagamentos.novo', ['id' => $cliente->id ] )}}" role="button">Pagamentos</a>
-        <a class="btn btn-primary" href="{{route('pagamentos.historico', $cliente )}}" role="button">Historico</a>
+        <a class="btn btn-primary" href="{{route('pagamentos.novo', ['id' => $cliente->id ] )}}" role="button">Novo Pagamento</a>
+        <a class="btn btn-primary" href="{{route('pagamentos.historico', $cliente )}}" role="button">Financeiro</a>
+        <a class="btn btn-primary" href="{{route('atendimentos.registro', $cliente )}}" role="button">Atendimentos</a>
     </form>
 
     </body>
