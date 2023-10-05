@@ -23,7 +23,7 @@
     ID: {{$cliente->id}}<br>
     Nome: {{$cliente->nome}} -> <a href="{{route('clientes.show', $cliente->id )}}">ver</a><br><br>
 
-    <table id="TabelaRegistro" border=1 align="center">
+    <table class="TabelaRegistro">
         <thead>
             <tr>
                 <th>Agendado</th>
@@ -39,7 +39,10 @@
             <tr>
                 <td><?= date('d/m/Y H:m', strtotime($atendimento->agendamento)) ?></td>
                 <td><?php
-                        if($atendimento->atendido == null){
+                        if($atendimento->falta == 1){
+                            echo 'Faltou';
+                        }
+                        else if($atendimento->atendido == null){
                             echo 'Não atendido';
                         }else{
                             echo date('d/m/Y H:m', strtotime($atendimento->atendido));

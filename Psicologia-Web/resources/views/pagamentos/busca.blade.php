@@ -19,7 +19,7 @@
     @component("components.menuLogado")
     @endcomponent
 
-    <table id="TabelaClientes" border=1 align="center">
+    <table class="TabelaHistorico">
         <thead>
             <tr>
                 <th>Nome</th>

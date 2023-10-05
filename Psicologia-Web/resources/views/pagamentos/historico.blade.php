@@ -24,7 +24,7 @@
     Nome: {{$cliente->nome}} -> <a href="{{route('clientes.show', $cliente->id )}}">ver</a><br>
     Saldo: R${{$cliente->saldo}}<br><br>
 
-    <table id="TabelaHistorico" border=1 align="center">
+    <table class="TabelaHistorico">
         <thead>
             <tr>
                 <th>Descricao</th>
