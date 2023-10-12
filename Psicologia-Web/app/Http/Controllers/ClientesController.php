@@ -14,7 +14,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Clientes::all();
+        $clientes = Clientes::orderBy('nome', 'asc')->get();
         return view("clientes.index", ['clientes' => $clientes]);
     }
 
@@ -43,7 +43,7 @@ class ClientesController extends Controller
 
         Clientes::create($data);
 
-        $clientes = Clientes::all();
+        $clientes = Clientes::orderBy('nome', 'asc')->get();
         return view("clientes.index", ['clientes' => $clientes]);
     }
 

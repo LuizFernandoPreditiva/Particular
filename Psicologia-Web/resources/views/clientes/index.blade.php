@@ -26,7 +26,7 @@
                 <th>Telefone</th>
                 <th>Registrado</th>
                 <th>Visualizar</th>
-                <th>Serviços</th>
+                <th>Atendimentos</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +38,7 @@
                 <td><?= $cl->telefone ?></td>
                 <td><?= date('d/m/Y', strtotime($cl->created_at)) ?></td>
                 <td><a href="{{route('clientes.show', $cl->id )}}">Visualizar</a></td>
-                <td><a href="">X</a></td>
+                <td><a href="{{route('atendimentos.registro', $cl )}}">Visualizar</a></td>
             </tr>
             <?php
                 endforeach;
