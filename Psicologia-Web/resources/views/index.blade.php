@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <title>Psicologia Web</title>
 </head>
-<body class="fundo">
+<body>
 
     @component("components.menulogin")
     @endcomponent
@@ -19,8 +19,22 @@
     @endcomponent
 
 
-    <div class="texto">
+    <div class="home">
         <p>HOME</p>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+    </div>
+
+    <div class="sobre">
+        <p>Sobre</p>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+    </div>
+
+    <div class="contato">
+        <p>Contato</p>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
     </div>
 
 

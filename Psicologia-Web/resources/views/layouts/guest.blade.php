@@ -14,7 +14,7 @@
         <!-- Scripts -->
 
     </head>
-    <body class="fundo">
+    <body>
 
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}

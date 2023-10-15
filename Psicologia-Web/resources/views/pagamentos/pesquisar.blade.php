@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <title>Pesquisar pacientes</title>
 </head>
-<body class="fundo">
+<body>
 
     @component("components.menulogout")
     @endcomponent
