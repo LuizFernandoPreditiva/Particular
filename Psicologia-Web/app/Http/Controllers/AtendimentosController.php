@@ -113,9 +113,15 @@ class AtendimentosController extends Controller
      * @param  \App\Models\Atendimentos  $atendimentos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Atendimentos $atendimentos)
+    public function destroy(Atendimentos $atendimento)
     {
-        //
+        $cliente = Clientes::findOrFail($atendimento->cliente_id);
+
+        $atendimento->delete();
+
+        $atendimentos = Atendimentos::where('cliente_id', $cliente->id)->get();
+
+        return redirect()->route('atendimentos.registro', ['cliente' => $cliente, 'atendimentos' => $atendimentos]);
     }
 
     public function registro(Clientes $cliente)

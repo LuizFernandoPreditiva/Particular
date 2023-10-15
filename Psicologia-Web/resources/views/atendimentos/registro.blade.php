@@ -49,7 +49,11 @@
                         }
                     ?></td>
                 <td>X</td>
-                <td>X</td>
+                <td><form action="{{route('atendimentos.destroy', $atendimento)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-primary">Cancelar</button>
+                </form></td>
             </tr>
             <?php
                 endforeach;
