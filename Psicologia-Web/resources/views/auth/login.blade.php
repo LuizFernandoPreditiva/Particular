@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <title>Psicologia Web</title>
 </head>
-<body>
+<body class="fundo">
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -40,7 +40,7 @@
 
             <div class="flex items-center justify-end mt-4">
 
-                <x-button class="btn btn-primary"></x-button>
+                <x-button class="btn btn-primary">
                     {{ __('Logar') }}
                 </x-button>
             </div>
