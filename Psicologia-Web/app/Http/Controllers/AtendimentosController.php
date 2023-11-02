@@ -70,6 +70,16 @@ class AtendimentosController extends Controller
 
         $cliente = Clientes::findOrFail($request->input('cliente_id'));
 
+        $faltas = $cliente->faltas;
+        $faltas += $falta;
+        $atendimentos = $cliente->atendimentos;
+        $atendimentos += 1;
+
+        $cliente->update([
+            'faltas' => $faltas,
+            'atendimentos' => $atendimentos,
+        ]);
+
         return redirect()->route('clientes.show', ['cliente' => $cliente]);
     }
 
