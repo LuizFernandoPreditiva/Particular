@@ -1,3 +1,9 @@
+@component("components.menulogout")
+@endcomponent
+
+@component("components.logo")
+@endcomponent
+
 <div class="containerMenuBarLogado">
     <div class="menuBarLogado">
         <a href="{{route('logado')}}">Inicio</a>

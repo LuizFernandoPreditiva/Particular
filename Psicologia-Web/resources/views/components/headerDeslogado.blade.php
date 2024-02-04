@@ -1,3 +1,9 @@
+    @component("components.menulogin")
+    @endcomponent
+
+    @component("components.logo")
+    @endcomponent
+
 <div class="containerMenuBarDeslogado">
     <div class="menuBarDeslogado">
         <a href="home">Home</a>
