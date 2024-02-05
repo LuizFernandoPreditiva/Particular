@@ -2,15 +2,6 @@
 
 @section('main')
 
-    @component("components.menulogout")
-    @endcomponent
-
-    @component("components.logo")
-    @endcomponent
-
-    @component("components.menuLogado")
-    @endcomponent
-
     <form action="{{route('clientes.update', $cliente )}}" method="post">
         @csrf
         @method('PUT')
