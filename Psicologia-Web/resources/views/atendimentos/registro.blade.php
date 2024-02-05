@@ -31,7 +31,7 @@
                             echo date('d/m/Y H:m', strtotime($atendimento->atendido));
                         }
                     ?></td>
-                <td>X</td>
+                <td><a href="{{route('atendimentos.edit', $atendimento->id )}}" class="btn btn-primary">Alterar</a></td>
                 <td><form action="{{route('atendimentos.destroy', $atendimento)}}" method="post">
                     @csrf
                     @method('DELETE')

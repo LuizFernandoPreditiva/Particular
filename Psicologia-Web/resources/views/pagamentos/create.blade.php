@@ -3,14 +3,6 @@
 @section('main')
 
 
-    @component("components.menulogout")
-    @endcomponent
-
-    @component("components.logo")
-    @endcomponent
-
-    @component("components.menuLogado")
-    @endcomponent
 
     Paciente: {{$cliente->nome}}<br><br>
 

@@ -2,15 +2,6 @@
 
 @section('main')
 
-    @component("components.menulogout")
-    @endcomponent
-
-    @component("components.logo")
-    @endcomponent
-
-    @component("components.menuLogado")
-    @endcomponent
-
     <h1>Cliente:</h1>
     ID: {{$cliente->id}}<br>
     Nome: {{$cliente->nome}} -> <a href="{{route('clientes.show', $cliente->id )}}">ver</a><br>

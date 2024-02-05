@@ -100,9 +100,9 @@ class AtendimentosController extends Controller
      * @param  \App\Models\Atendimentos  $atendimentos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Atendimentos $atendimentos)
+    public function edit(Atendimentos $atendimento)
     {
-        //
+        return view('atendimentos.edit', compact('atendimento'));
     }
 
     /**
@@ -112,9 +112,41 @@ class AtendimentosController extends Controller
      * @param  \App\Models\Atendimentos  $atendimentos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Atendimentos $atendimentos)
+    public function update(Request $request, Atendimentos $atendimento)
     {
-        //
+
+        $dataAgendado = $request->input('dataAgendamento');
+        $horaAgendado = $request->input('horaAgendamento');
+        $dataHoraAgendamento = "{$dataAgendado} {$horaAgendado}";
+
+        $dataAtendido = $request->input('dataAtendido');
+        $horaAtendido = $request->input('horaAtendido');
+        $dataHoraAtendido = $dataAtendido && $horaAtendido ? "{$dataAtendido} {$horaAtendido}" : null;
+
+        $falta = $request->has('falta') ? 1 : 0;
+
+        $atendimento->update([
+            'agendamento' => $dataHoraAgendamento,
+            'atendido' => $dataHoraAtendido,
+            'duracao' => $request->input('duracao'),
+            'falta' => $falta,
+            'trabalho' => $request->input('trabalho'),
+            'resumo' => $request->input('resumo')
+        ]);
+
+        $cliente = Clientes::findOrFail($request->input('cliente_id'));
+
+        $faltas = $cliente->faltas;
+        $faltas += $falta;
+        $atendimentos = $cliente->atendimentos;
+        $atendimentos += 1;
+
+        $cliente->update([
+            'faltas' => $faltas,
+            'atendimentos' => $atendimentos,
+        ]);
+
+        return redirect()->route('atendimentos.registro', ['cliente' => $cliente, 'atendimentos' => $cliente->atendimentos]);
     }
 
     /**
