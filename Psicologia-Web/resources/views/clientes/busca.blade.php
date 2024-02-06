@@ -8,7 +8,7 @@
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th>Visualizar</th>
-                <th>Serviços</th>
+                <th>Atendimentos</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +19,7 @@
                 <td><?= $cl->nome ?></td>
                 <td><?= $cl->telefone ?></td>
                 <td><a href="{{route('clientes.show', $cl->id )}}">Visualizar</a></td>
-                <td><a href="">X</a></td>
+                <td><a href="{{route('atendimentos.registro', $cl )}}">Visualizar</a></td>
             </tr>
             <?php
                 endforeach;
