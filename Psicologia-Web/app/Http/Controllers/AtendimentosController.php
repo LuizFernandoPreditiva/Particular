@@ -125,6 +125,19 @@ class AtendimentosController extends Controller
 
         $falta = $request->has('falta') ? 1 : 0;
 
+        //calcular as faltas para atualizar o cliente
+        $faltaAnterior = $atendimento->falta;
+        $faltaNova = 0;
+
+        if($faltaAnterior > $falta){
+            $faltaNova -= 1;
+        }else if($faltaAnterior < $falta){
+            $faltaNova += 1;
+        }else{
+            $faltaNova = 0;
+        }
+        //fim do calculo
+
         $atendimento->update([
             'agendamento' => $dataHoraAgendamento,
             'atendido' => $dataHoraAtendido,
@@ -136,10 +149,12 @@ class AtendimentosController extends Controller
 
         $cliente = Clientes::findOrFail($request->input('cliente_id'));
 
-        $faltas = $cliente->faltas;
-        $faltas += $falta;
+
+        //apenas manter.
         $atendimentos = $cliente->atendimentos;
-        $atendimentos += 1;
+
+        $faltas = $cliente->faltas;
+        $faltas += $faltaNova;
 
         $cliente->update([
             'faltas' => $faltas,
@@ -159,7 +174,25 @@ class AtendimentosController extends Controller
     {
         $cliente = Clientes::findOrFail($atendimento->cliente_id);
 
+        $falta = 0;
+        if($atendimento->falta == 1){
+            $falta -= 1;
+        }else{
+            $falta = 0;
+        }
+
+        $faltas = $cliente->faltas;
+        $faltas += $falta;
+
         $atendimento->delete();
+
+        $atendimentos = $cliente->atendimentos;
+        $atendimentos -= 1;
+
+        $cliente->update([
+            'faltas' => $faltas,
+            'atendimentos' => $atendimentos,
+        ]);
 
         $atendimentos = Atendimentos::where('cliente_id', $cliente->id)->get();
 
