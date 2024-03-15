@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\DB;
 
@@ -17,8 +18,8 @@ class CreateClientesSeed extends Seeder
     {
         DB::table('clientes')->insert([
             'nome' => 'Luiz',
-            'cpf' => '084',
-            'telefone' => '032',
+            'cpf' => '08483171651',
+            'telefone' => '(32)988097534',
             'endereco' => 'Casa',
             'cidade' => 'SJN',
             'estado' => 'MG',
@@ -26,6 +27,8 @@ class CreateClientesSeed extends Seeder
             'atendimentos' => 0,
             'faltas' => 0,
             'saldo' => 0,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
     }
 }
