@@ -1,8 +1,10 @@
 @component("components.menulogout")
 @endcomponent
 
+<div class="logologado">
 @component("components.logo")
 @endcomponent
+</div>
 
 <div class="containerMenuBarLogado">
     <div class="menuBarLogado">

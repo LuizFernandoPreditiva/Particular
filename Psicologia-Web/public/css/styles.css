@@ -1,5 +1,6 @@
 body {
     background: linear-gradient(to bottom, #fcf8f7, #fdf9f7);
+    /*background: linear-gradient(to bottom, #fc5d36, #f0631d);*/
     background-size: cover;
 }
 
@@ -43,15 +44,18 @@ body {
 }
 
 .container {
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
+}
+
+.logologado{
+    text-align: center;
 }
 
 .img-centered {
     width: 200px;
     height: 200px;
-
 }
 
 .menuLogin{
@@ -60,14 +64,34 @@ body {
     font-size: 20px;
 }
 
+.container-logo{
+    display: flex;
+}
+
+.container-logo .container{
+    display: flex;
+    flex: 0 1 auto;
+}
+
 .containerMenuBarDeslogado{
     border: 1px solid #000000;
     border-radius: 10px;
-    background-color: #000000;
+    background-color: #cccaca;
     margin-left: 20px;
     margin-right: 20px;
     display: flex;
     justify-content: center;
+}
+
+.containerMenuBarDeslogado img{
+    width: 100px;
+    height: 100px;
+}
+
+.menuBarDeslogado{
+    display: flex;
+    justify-content: center;
+    flex: 1;
 }
 
 .menuBarDeslogado ul{
@@ -85,6 +109,7 @@ body {
     text-decoration: none;
     font-size: 30px;
 }
+
 
 .containerMenuBarLogado{
     border: 1px solid #000000;
@@ -111,3 +136,5 @@ body {
     text-decoration: none;
     font-size: 30px;
 }
+
+

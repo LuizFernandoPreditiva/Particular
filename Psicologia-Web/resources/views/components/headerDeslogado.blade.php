@@ -1,10 +1,10 @@
     @component("components.menulogin")
     @endcomponent
 
-    @component("components.logo")
-    @endcomponent
-
 <div class="containerMenuBarDeslogado">
+    @component("components.logo")
+        @endcomponent
+
     <div class="menuBarDeslogado">
         <a href="home">Home</a>
         <a href="">Sobre</a>
