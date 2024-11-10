@@ -2,8 +2,9 @@
     @endcomponent
 
 <div class="containerMenuBarDeslogado">
+    
     @component("components.logo")
-        @endcomponent
+    @endcomponent
 
     <div class="menuBarDeslogado">
         <a href="home">Home</a>
