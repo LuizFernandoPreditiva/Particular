@@ -8,7 +8,7 @@
         <!--<meta name="csrf-token" content="{//{ csrf_token() }}">-->
         <!--<title>{{ config('app.name') }}</title>-->
         <title>Natalia Psicologa</title>
-        <link rel="shortcut icon" type="image/png " href="{{ asset('images/logo-icon.png') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-icon.png') }}">
     </head>
     <body>
 
