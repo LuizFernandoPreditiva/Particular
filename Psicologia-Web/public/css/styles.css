@@ -1,143 +1,127 @@
-body {
-    background: linear-gradient(to bottom, #fcf8f7, #fdf9f7);
-    /*background: linear-gradient(to bottom, #fc5d36, #f0631d);*/
-    background-size: cover;
+/* Generics */
+
+:root {
+    --background: #fcf8f7;
+    --foreground: #f58d2c;
+    --primary: #cf5b0e;
+    --primary-light: #fcf8f7;
+    --primary-foreground: #FFF;
+    --secundary: #fcf8f7;
+    --secundary-forefround: #cf5b0e;
 }
 
-
-/* ------ Inicio Index Deslogado ------ */
-
-.containerMenuBarDeslogado{
-    border: 1px solid #000000;
-    border-radius: 10px;
-    background-color: #cccaca;
-    margin-left: 20px;
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-    margin: 10px;
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
 }
 
-.container-logo{
-    display: flex;
-}
-
-.container-logo .container{
-    display: flex;
-    flex: 0 1 auto;
+html {
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
 }
 
 .container {
-    /*display: flex;*/
-    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.button {
+    display: inline-block;
+    border: 0.2rem solid var(--foreground);
+    color: var(--foreground);
+    border-radius: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    transition: all ease .2s;
+}
+
+.button:hover{
+    background-color: var(--foreground);
+    color: var(--primary-foreground);
+}
+
+/* Fim Generics */
+
+/* Header */
+
+header {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.img-centered {
-    width: 200px;
-    height: 200px;
+.navbar {
+    flex: 1;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
 }
 
-/* ------ Fim Index Deslogado ------ */
+.logo img {
+    width: 10.2rem;
+    height: 10.2rem;
+}
 
-
-/*
-.container {
-    /*display: flex;*-/
+.menu-opener {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    justify-items: center;
+    gap: 0.5rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    cursor: pointer;
+}
+
+.menu-opener span {
+    display: block;
+    width: 2rem;
+    height: 0.1rem;
+    background-color: black;
+}
+
+header nav {
+    display: none;
+    flex-direction: column;
     align-items: center;
+    gap: 2rem;
+    padding: 2rem;
 }
 
-.logologado{
-    text-align: center;
-}
-
-.img-centered {
-    width: 200px;
-    height: 200px;
-}
-
-.menuLogin{
-    text-align: end;
-    padding-right: 20px;
-    font-size: 20px;
-}
-
-.container-logo{
-    display: flex;
-}
-
-.container-logo .container{
-    display: flex;
-    flex: 0 1 auto;
-}
-
-.containerMenuBarDeslogado{
-    border: 1px solid #000000;
-    border-radius: 10px;
-    background-color: #cccaca;
-    margin-left: 20px;
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.containerMenuBarDeslogado img{
-    width: 100px;
-    height: 100px;
-}
-
-.menuBarDeslogado{
-    display: flex;
-    justify-content: center;
-    flex: 1;
-}
-
-.menuBarDeslogado ul{
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-}
-
-.menuBarDeslogado li{
-    flex: 1;
-    text-align: center;
-}
-
-.menuBarDeslogado a{
+header nav a{
+    font-size: 1.4rem;
     text-decoration: none;
-    font-size: 30px;
 }
 
+header nav.opened{
+    display:flex;
+}
 
-.containerMenuBarLogado{
-    border: 1px solid #000000;
-    border-radius: 10px;
-    background-color: #000000;
-    margin-left: 20px;
-    margin-right: 20px;
+.container-menuBarDeslogado{
+    border: 0.2rem solid var(--foreground);
+    border-radius: 1.5rem;
+    margin-bottom: 4rem;
+    height: 5rem;
+}
+
+.menuBarDeslogado {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    max-width: 40rem;
+    font-size: 3rem;
+    padding: 0 1rem;
 }
 
-.menuBarLogado ul{
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-}
-
-.menuBarLogado li{
-    flex: 1;
-    text-align: center;
-}
-
-.menuBarLogado a{
+.menuBarDeslogado a {
+    font-size: 3rem;
     text-decoration: none;
-    font-size: 30px;
+    color: var(--primary);
 }
 
-*/
-
+/* Fim Header */
 
 /* ------ Inicio Tabelas ------ */
 
@@ -182,3 +166,44 @@ body {
 }
 
 /* ------ Fim Tabelas ------ */
+
+
+@media (width > 600px){
+    
+    /* Header*/
+    header {
+        flex-direction: row;
+    }
+
+    .menu-opener{
+        display: none;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .container-menuBarDeslogado{
+        border: 0.2rem solid var(--foreground);
+        border-radius: 1.5rem;
+        margin-bottom: 4rem;
+        height: 6rem;
+    }
+    
+    .menuBarDeslogado {
+        display: flex;
+        justify-content: space-between;
+        max-width: 60rem;
+        margin: auto;
+        margin-bottom: 4rem;
+        font-size: 4rem;
+    }
+
+    .menuBarDeslogado a {
+        font-size: 4rem;
+        text-decoration: none;
+        color: var(--primary);
+    }
+    /* Fim Header*/
+}
