@@ -5,23 +5,9 @@
 @endsection
 
 @section('main')
+    <x-homeDeslogado></x-homeDeslogado>
+@endsection
 
-    <div class="home">
-        <p>HOME</p>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-    </div>
-
-    <div class="sobre">
-        <p>Sobre</p>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-    </div>
-
-    <div class="contato">
-        <p>Contato</p>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-    </div>
-
+@section('footer')
+    <x-footerDeslogado></x-footerDeslogado>
 @endsection
