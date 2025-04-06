@@ -6,8 +6,8 @@
 
 @section('main')
 
-    <div class="home">
-        <p>HOME</p>
+    <div class="Home">
+        <p>Home</p>
         <br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br>
     </div>
@@ -24,16 +24,5 @@
         <br><br><br><br><br><br><br>
     </div>
 
-    <div class="contato">
-        <p>Contato</p>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-    </div>
-
-    <div class="contato">
-        <p>Contato</p>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-    </div>
 
 @endsection

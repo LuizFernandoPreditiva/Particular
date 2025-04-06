@@ -119,6 +119,11 @@ html {
 .nav-links a:hover {
     color: var(--primary);
 }
+ 
+.login {
+    margin-top: 20px;
+}
+   
 
 /* Fim Header */
 
@@ -209,6 +214,10 @@ html {
         height: 3px;
         background-color: var(--primary);
     }
-   
+
+    .login {
+        margin-top: 0px;
+    }
+
     /* Fim Header*/
 }
