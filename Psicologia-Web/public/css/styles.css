@@ -20,6 +20,7 @@
 html {
     font-family: Arial, Arial, Helvetica, sans-serif;
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -127,6 +128,64 @@ html {
 
 /* Fim Header */
 
+/* Home */
+
+#home {
+    position: relative;
+    padding-top: 100px;   /* espaço para o header fixo */
+}
+
+.info-section {
+    padding: 60px 40px;
+    background-color: var(--background);
+    display: flex;
+    justify-content: center;
+}
+  
+.info-content {
+    display: flex;
+    max-width: 1200px;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+  
+.info-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+  
+.info-texto {
+    flex: 1;
+    min-width: 300px;
+    margin: 0px 40px;
+}
+  
+.info-texto h2 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+  
+.info-texto p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+  
+.info-texto a {
+    color: #0077cc;
+    text-decoration: none;
+}
+  
+.info-texto a:hover {
+    text-decoration: underline;
+}
+
+/* Fim Home */
+
 /* ------ Inicio Tabelas ------ */
 
 
@@ -175,7 +234,7 @@ html {
 
 @media (min-width: 600px){
     
-    /* Header*/
+    /* Header */
 
     .menu-opener {
         display: none;
@@ -206,7 +265,6 @@ html {
     }
 
     .nav-links a.active::after {
-        content: '';
         position: absolute;
         left: 0;
         bottom: -5px;
@@ -220,4 +278,13 @@ html {
     }
 
     /* Fim Header*/
+
+    /* Home */
+
+    #home {
+        position: relative;
+        padding-top: 100px;   /* espaço para o header fixo */
+    }
+
+    /* Fim Home */
 }
