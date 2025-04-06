@@ -24,4 +24,16 @@
         <br><br><br><br><br><br><br>
     </div>
 
+    <div class="contato">
+        <p>Contato</p>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+    </div>
+
+    <div class="contato">
+        <p>Contato</p>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+    </div>
+
 @endsection

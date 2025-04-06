@@ -1,3 +1,16 @@
+/* menu */ 
+
+const menuOpener = document.querySelector('.menu-opener');
+const navLinks = document.querySelector('.nav-links');
+const actions = document.querySelector('.actions');
+
+menuOpener.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    actions.classList.toggle('active');
+});
+
+/* Fim menu */     
+
 
 /* Slider de testimonials */
 const toggleSlider = () => {
@@ -28,4 +41,3 @@ const toggleSlider = () => {
 }
 
 setInterval(toggleSlider, 5000);
-
