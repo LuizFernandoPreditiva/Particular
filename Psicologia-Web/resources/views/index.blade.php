@@ -28,11 +28,27 @@
         </div>
     </section>
 
-    <div class="sobre">
-        <p>Sobre</p>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-    </div>
+    <section class="sobre-profissional" id="sobre">
+
+        <div class="info-basica"> <!-- Texto informativo fora da div com borda -->   
+            <h2>Natalia Cabette Lanini Duarte</h2>
+            <p>Psicologa.</p>
+            <p>CRP: 00/00000</p>
+        </div>
+
+        <div class="container-sobre">
+            <div class="descricao">
+                <p>
+                    Com vasta experiência em psicanálise, a profissional atua com foco no acolhimento
+                    humano, ética e escuta ativa. Seu trabalho é pautado em evidências e conexão empática.
+                </p>
+            </div>
+      
+            <!-- Imagem ao lado -->
+            <img src="{{ asset('images/Profissional.png') }}" alt="Natalia Cabette Lanini Duarte" class="foto-profissional" title="Natalia Cabette Lanini Duarte">
+      
+        </div>
+      </section>
 
     <div class="contato">
         <p>Contato</p>

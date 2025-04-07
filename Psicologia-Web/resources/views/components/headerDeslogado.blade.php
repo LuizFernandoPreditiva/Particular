@@ -9,8 +9,8 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#">Sobre Mim</a></li>
+            <li><a href="#home" class="active">Inicio</a></li>
+            <li><a href="#sobre">Sobre Mim</a></li>
             <li><a href="#">Serviços</a></li>
             <li><a href="#">Contato</a></li>
         </ul>
