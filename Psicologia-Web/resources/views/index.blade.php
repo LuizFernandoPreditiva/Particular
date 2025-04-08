@@ -42,6 +42,14 @@
                     Com vasta experiência em psicanálise, a profissional atua com foco no acolhimento
                     humano, ética e escuta ativa. Seu trabalho é pautado em evidências e conexão empática.
                 </p>
+                <p>
+                    Com vasta experiência em psicanálise, a profissional atua com foco no acolhimento
+                    humano, ética e escuta ativa. Seu trabalho é pautado em evidências e conexão empática.
+                </p>
+                <p>
+                    Com vasta experiência em psicanálise, a profissional atua com foco no acolhimento
+                    humano, ética e escuta ativa. Seu trabalho é pautado em evidências e conexão empática.
+                </p>
             </div>
       
             <!-- Imagem ao lado -->
