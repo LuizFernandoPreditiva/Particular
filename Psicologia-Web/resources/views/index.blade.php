@@ -61,20 +61,25 @@
       <section class="atendimento" id="atendimento">
         <div class="atendimento-container">
             <div class="atendimento-card">
-                <img src="{{ asset('images/online.png') }}" alt="On-line" title="On-line">
+                <div class="img-wrapper">
+                    <img src="{{ asset('images/online.png') }}" alt="On-line" title="On-line">
+                    <a href="#" class="btn-agendar btn-overlay">Agendar Sessão</a>
+                </div>
                 <h2>Online</h2>
                 <p>
-                    Atendimento On-line
+                    Atendimento On-line, feito em um ambiente seguro e sigiloso, com toda segurança ao
+                    paciente e psicologo.
                 </p>
-                <span>A TCC é baseada na colaboração entre o terapeuta e o paciente.</span>
             </div>
             <div class="atendimento-card">
-                <img src="{{ asset('images/presencial.png') }}" alt="Limbic System" title="Limbic System">
+                <div class="img-wrapper">
+                    <img src="{{ asset('images/presencial.png') }}" alt="Presencial" title="Presencial">
+                    <a href="#" class="btn-agendar btn-overlay">Agendar Sessão</a>
+                </div>
                 <h2>Presencial</h2>
                 <p>
-                    Atendimento Presencial
+                    Atendimento Presencial, em clinica propria com ambiente seguro e confortavel.
                 </p>
-                <span>A TCC é baseada na colaboração entre o terapeuta e o paciente.</span>
             </div>
         </div>
     </section>

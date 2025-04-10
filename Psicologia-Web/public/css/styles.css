@@ -272,32 +272,61 @@ html {
     width: 100%;
     max-width: 500px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
 }
   
 .atendimento-card img {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.atendimento-card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
   
 .atendimento-card h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 8px;
 }
   
 .atendimento-card p {
-    font-weight: 500;
-    color: #666;
+    font-size: 1.6rem;
+    color: black;
+    text-align: justify;
 }
-  
-.atendimento-card span {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.95rem;
-    color: #333;
+
+.btn-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: var(--foreground);
+    color: var(--background);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.atendimento-card:hover .btn-overlay {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* Fim Atendimento */
