@@ -281,19 +281,21 @@ html {
     position: relative;
     overflow: hidden;
     border-radius: 12px;
+    width: 100%;
+    height: 300px;
 }
   
 .atendimento-card img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s ease;
+    border-radius: 12px;
 }
 
 .atendimento-card:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.15);
+    
 }
   
 .atendimento-card h2 {
@@ -312,10 +314,11 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
+    transition: all 0.4s ease;
     background-color: var(--foreground);
     color: var(--background);
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 6px;
     font-weight: bold;
     text-decoration: none;
     opacity: 0;
