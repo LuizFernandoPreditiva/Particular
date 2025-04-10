@@ -58,11 +58,26 @@
         </div>
       </section>
 
-    <div class="contato">
-        <p>Contato</p>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-    </div>
+      <section class="atendimento" id="atendimento">
+        <div class="atendimento-container">
+            <div class="atendimento-card">
+                <img src="{{ asset('images/online.png') }}" alt="On-line" title="On-line">
+                <h2>Online</h2>
+                <p>
+                    Atendimento On-line
+                </p>
+                <span>A TCC é baseada na colaboração entre o terapeuta e o paciente.</span>
+            </div>
+            <div class="atendimento-card">
+                <img src="{{ asset('images/presencial.png') }}" alt="Limbic System" title="Limbic System">
+                <h2>Presencial</h2>
+                <p>
+                    Atendimento Presencial
+                </p>
+                <span>A TCC é baseada na colaboração entre o terapeuta e o paciente.</span>
+            </div>
+        </div>
+    </section>
 
 
 @endsection
