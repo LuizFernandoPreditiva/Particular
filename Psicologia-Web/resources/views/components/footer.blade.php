@@ -5,8 +5,8 @@
 </section>
 
 <footer>
-    <a href="">
-        <img class="logo" src="images/logo_white.png" alt="" />
+    <a href="https://luizfernando11.github.io/Portifolio/">
+        <img class="logo" src="{{ asset('images/logo_white.png') }}" alt="Link portifolio" title="Portifolio" />
     </a>
     <p class="title">Vivendo, aprendendo e melhorando um dia de cada vez.</p>
 
