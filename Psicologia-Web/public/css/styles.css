@@ -334,6 +334,111 @@ html {
 
 /* Fim Atendimento */
 
+/* Cursos */
+
+#cursos {
+    position: relative;
+    padding-top: 100px;
+}
+
+.cursos {
+    padding: 8rem 2rem;
+    text-align: center;
+    color: var(--primary);
+    background-color: var(--background);
+}
+
+.cursos .title {
+    font-weight: bold;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-bottom: 3rem;
+}
+
+.cursos .subtitle {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.cursos .slider {
+    max-width: 50rem;
+    overflow-x: hidden;
+    margin: auto;
+}
+
+.cursos .slider input {
+    display: none;
+}
+
+.cursos .slider-area {
+    width: 200%;
+    display: flex;
+    transition: all ease .5s;
+}
+
+.cursos .slider-item {
+    width: 100%;
+}
+
+.cursos .slider-item img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.cursos .slider-item .description {
+    font-size: 2rem;
+    line-height: 3.3rem;
+    margin-bottom: 4rem;
+}
+
+.cursos .slider-item .name {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.cursos .slider-item .role {
+    font-size: 1.7rem;
+}
+
+.cursos .slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.cursos .slider-nav label {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 0.2rem solid var(--primary);
+    transition: all ease .5s;
+}
+
+#slider-1:checked ~ .slider-area {
+    margin-left: 0%;
+}
+#slider-2:checked ~ .slider-area{
+    margin-left: -100%;
+}
+
+#slider-1:checked ~ .slider-nav .n1 {
+    background-color: var(--primary);
+}
+
+#slider-2:checked ~ .slider-nav .n2 {
+    background-color: var(--primary);
+}
+
+/* Fim Depoimentos */
+
 /* collab */
 
 .collab {

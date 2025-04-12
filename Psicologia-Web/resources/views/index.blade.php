@@ -84,5 +84,33 @@
         </div>
     </section>
 
+    <section class="cursos" id="cursos">
+        <p class="title">Cursos disponiveis</p>
+        <p class="subtitle">Cursos desenvolvidos por mim com foco em melhorias diretivas.</p>
+
+        <div class="slider">
+            <input checked id="slider-1" name="slider" type="radio">
+            <input id="slider-2" name="slider" type="radio">
+            <div class="slider-area">
+                <div class="slider-item">
+                    <img src="{{ asset('images/online.png') }}" alt="" />
+                    <p class="description">"Curso em gerenciamento de tempo voltado as mulhes"</p>
+                    <p class="name">Gerenciamento de tempo</p>
+                    <!--<p class="role"></p>-->
+                </div>
+                <div class="slider-item">
+                    <img src="{{ asset('images/online.png') }}" alt="" />
+                    <p class="description">"Curso em gerenciamento de tempo voltado as mulhes"</p>
+                    <p class="name">Gerenciamento de tempo</p>
+                    <!--<p class="role"></p>-->
+                </div>
+            </div>
+            <div class="slider-nav">
+                <label class="n1" for="slider-1"></label>
+                <label class="n2" for="slider-2"></label>
+            </div>
+        </div>
+    </section>
+
 
 @endsection
