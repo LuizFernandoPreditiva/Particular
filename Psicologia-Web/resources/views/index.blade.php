@@ -106,10 +106,10 @@
                     <p class="role"></p>
                 </div> -->
             </div>
-            <div class="slider-nav">
+            <!--<div class="slider-nav">
                 <label class="n1" for="slider-1"></label>
-                <!--<label class="n2" for="slider-2"></label>-->
-            </div>
+                <label class="n2" for="slider-2"></label>
+            </div>-->
         </div>
     </section>
 
