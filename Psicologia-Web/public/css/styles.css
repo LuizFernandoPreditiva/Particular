@@ -342,7 +342,7 @@ html {
 }
 
 .cursos {
-    padding: 8rem 2rem;
+    padding: 5rem 1rem;
     text-align: center;
     color: var(--primary);
     background-color: var(--background);
@@ -382,17 +382,17 @@ html {
 }
 
 .cursos .slider-item img {
-    width: 10rem;
-    height: 10rem;
+    width: 15rem;
+    height: 15rem;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 4rem;
 }
 
 .cursos .slider-item .description {
-    font-size: 2rem;
+    font-size: 1.6rem;
     line-height: 3.3rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .cursos .slider-item .name {
@@ -422,20 +422,24 @@ html {
     transition: all ease .5s;
 }
 
+
 #slider-1:checked ~ .slider-area {
-    margin-left: 0%;
+    margin-left: -50%;
 }
+/*
 #slider-2:checked ~ .slider-area{
     margin-left: -100%;
 }
+*/
 
 #slider-1:checked ~ .slider-nav .n1 {
     background-color: var(--primary);
 }
-
+/*
 #slider-2:checked ~ .slider-nav .n2 {
     background-color: var(--primary);
 }
+*/
 
 /* Fim Depoimentos */
 

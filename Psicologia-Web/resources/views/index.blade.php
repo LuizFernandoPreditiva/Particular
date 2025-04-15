@@ -90,24 +90,25 @@
 
         <div class="slider">
             <input checked id="slider-1" name="slider" type="radio">
-            <input id="slider-2" name="slider" type="radio">
+            <!--<input id="slider-2" name="slider" type="radio">-->
             <div class="slider-area">
                 <div class="slider-item">
-                    <img src="{{ asset('images/online.png') }}" alt="" />
-                    <p class="description">"Curso em gerenciamento de tempo voltado as mulhes"</p>
-                    <p class="name">Gerenciamento de tempo</p>
+                    <img src="{{ asset('images/Curso01.png') }}" alt="" />
+                    <p class="name">Tomando as rédeas da sua vida de volta</p>
+                    <p class="description">"Curso gravado para mulheres que desejam gerenciar seu tempo, com o objetivo de terem, minimamente, 7h de sobra na sua semana para fazerem o quiserem. Voltado para procrastinação, com técnicas, ferramentas e estratégias rápidas e funcionais, além de psicoeducação. Curso baseado na abordagem da psicologia TCC."</p>
+                    <a href="https://hotmart.com/pt-br/marketplace/produtos/tomando-as-redeas-da-sua-vida-de-volta/F96705165Y" class="btn-agendar">Saiba mais</a>
                     <!--<p class="role"></p>-->
                 </div>
-                <div class="slider-item">
-                    <img src="{{ asset('images/online.png') }}" alt="" />
+                <!-- <div class="slider-item">
+                    <img src="{/{ asset('images/online.png') }}" alt="" />
                     <p class="description">"Curso em gerenciamento de tempo voltado as mulhes"</p>
                     <p class="name">Gerenciamento de tempo</p>
-                    <!--<p class="role"></p>-->
-                </div>
+                    <p class="role"></p>
+                </div> -->
             </div>
             <div class="slider-nav">
                 <label class="n1" for="slider-1"></label>
-                <label class="n2" for="slider-2"></label>
+                <!--<label class="n2" for="slider-2"></label>-->
             </div>
         </div>
     </section>
