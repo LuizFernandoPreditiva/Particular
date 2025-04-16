@@ -1,6 +1,6 @@
 <header class="container">
     <nav class="navbar">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+        <a href=""><img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo"></a>
 
         <div class="menu-opener">
             <span></span>

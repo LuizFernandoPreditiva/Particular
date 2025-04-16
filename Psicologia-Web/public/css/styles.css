@@ -373,7 +373,7 @@ html {
 
 .cursos .slider-area {
     width: 200%;
-    height: 45rem; /* Quando "<div class="slider-nav">" descomentada, comentar tamanho esse heigth */
+    height: 50rem; /* Quando "<div class="slider-nav">" descomentada, comentar tamanho esse heigth */
     display: flex;
     transition: all ease .5s;
 }
@@ -393,7 +393,7 @@ html {
 .cursos .slider-item .description {
 
     max-width: 500px; /* limita a largura total */
-    padding: 0 20px;   /* adiciona espaço nas laterais */
+    padding: 0 65px;   /* adiciona espaço nas laterais */
     margin: 0 auto;    /* centraliza horizontalmente */
 
     text-align: justify;
@@ -549,7 +549,8 @@ footer .legal{
 
 
 .TabelaClientes{
-    padding-top: 200px;
+    position: relative;
+    padding-top: 100px;
     border-collapse: collapse;
     width: 70%;
     margin: 100px auto;
@@ -563,6 +564,8 @@ footer .legal{
 }
 
 .TabelaHistorico{
+    position: relative;
+    padding-top: 100px;
     border-collapse: collapse;
     width: 70%;
     margin: 0 auto;
@@ -576,6 +579,8 @@ footer .legal{
 }
 
 .TabelaRegistro{
+    position: relative;
+    padding-top: 100px;
     border-collapse: collapse;
     width: 70%;
     margin: 0 auto;
@@ -669,6 +674,20 @@ footer .legal{
 
     /* Fim sobre mim */
 
+    /* Collab */
+
+    .collab .title {
+        font-size: 3rem;
+        line-height: 2.5rem;
+    }
+
+    .collab .subtitle {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    /* FIm Collab */
+
     /* Atendimento */
 
     #atendimento {
@@ -686,18 +705,4 @@ footer .legal{
     }
 
     /* Fim Atendimento */
-
-    /* Collab */
-
-    .collab .title {
-        font-size: 3rem;
-        line-height: 2.5rem;
-    }
-
-    .collab .subtitle {
-        font-size: 2rem;
-        line-height: 2.5rem;
-    }
-
-    /* FIm Collab */
 }

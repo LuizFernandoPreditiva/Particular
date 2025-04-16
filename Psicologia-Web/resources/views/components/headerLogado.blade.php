@@ -1,7 +1,7 @@
 <header class="container">
 
     <nav class="navbar">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+        <a href="{{route('logado')}}"><img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo"></a>
         <ul class="nav-links">
             <li>
                 <div class="menuBarLogado">
