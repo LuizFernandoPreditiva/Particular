@@ -13,7 +13,7 @@
             <li><a href="#sobre">Sobre Mim</a></li>
             <li><a href="#atendimento">Atendimento</a></li>
             <li><a href="#cursos">Cursos</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="#contato">Contato</a></li>
         </ul>
 
         <div class="actions">

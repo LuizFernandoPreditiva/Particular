@@ -114,4 +114,41 @@
     </section>
 
 
+    <section class="contato-section" id="contato">
+        <h2>Meus Contatos:</h2>
+        <div class="contato-wrapper">
+            <div class="contato-content">
+                <div class="contato-image">
+                    <a href="https://wa.me/+5532988097534">
+                        <img src="images/whatsapp_icon.png" alt="WhatsApp" title="WhatsApp"/>
+                    </a>
+                </div>
+                <div class="contato-texto">
+                    <p>WhatsApp: (32) 98809-7534</p>
+                </div>
+            </div>
+            <div class="contato-content">
+                <div class="contato-image">
+                    <a href="https://www.instagram.com/luiz_fernando.11/">
+                        <img src="images/instagram_icon.png" alt="instagram" title="instagram"/>
+                    </a>
+                </div>
+                <div class="contato-texto">
+                    <p>Instagram: @nataliaPSI</p>
+                </div>
+            </div>
+            <div class="contato-content">
+                <div class="contato-image">
+                    <a href="mailto:luiz.fernando@viannasempre.com.br">
+                        <img src="images/email_icon.png" alt="email" title="email"/>
+                    </a>
+                </div>
+                <div class="contato-texto">
+                    <p>Email: nataliacabette@psicologiaweb.com.br</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 @endsection
