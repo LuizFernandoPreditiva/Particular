@@ -154,5 +154,7 @@
         </div>
     </section>
 
+    <!--<script type="text/javascript" src="{/{ asset('js/sliders.js') }}"></script>-->
+
 
 @endsection
