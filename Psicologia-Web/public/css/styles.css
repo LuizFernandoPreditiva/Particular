@@ -641,6 +641,104 @@ footer .legal{
 
 /* Fim Footer */
 
+/* Login */
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+  
+.login-box {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+  
+h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 30px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+form {
+    text-align: left;
+}
+  
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+  
+input[type="email"],
+.input-style {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 10px 5px;
+    margin-top: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+  
+input[type="email"]:focus,
+.input-style:focus {
+    border-image: linear-gradient(to right, #00c6ff, #bc00dd) 1;
+    border-bottom: 2px solid transparent;
+}
+  
+.password-field {
+    position: relative;
+}
+  
+.password-field .eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+}
+  
+.login-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 30px;
+    background: linear-gradient(to right, #00c6ff, #bc00dd);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+  
+.login-button:hover {
+    opacity: 0.9;
+}
+
+/* Fim Login */
+
 /* ------ Inicio Tabelas ------ */
 
 
