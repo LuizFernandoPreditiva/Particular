@@ -31,9 +31,9 @@
     <section class="sobre-profissional" id="sobre">
 
         <div class="info-basica"> <!-- Texto informativo fora da div com borda -->   
-            <h2>Natalia Cabette Lanini Duarte</h2>
+            <h2>Natália Cabette Lanini Duarte</h2>
             <p>Psicologa.</p>
-            <p>CRP: 00/00000</p>
+            <p>CRP-04/60423</p>
         </div>
 
         <div class="container-sobre">
@@ -63,7 +63,9 @@
             <div class="atendimento-card">
                 <div class="img-wrapper">
                     <img src="{{ asset('images/online.png') }}" alt="On-line" title="On-line">
-                    <a href="#" class="btn-agendar btn-overlay">Agendar Sessão</a>
+                    <a href="https://wa.me/+5532984058068?text=
+                        Olá%20Natália,%20gostaria%20de%20agendar%20uma%20sessão%20Online%20com%20você!" 
+                        class="btn-agendar btn-overlay" target="_blank">Agendar Sessão</a>
                 </div>
                 <h2>Online</h2>
                 <p>
@@ -74,7 +76,9 @@
             <div class="atendimento-card">
                 <div class="img-wrapper">
                     <img src="{{ asset('images/presencial.png') }}" alt="Presencial" title="Presencial">
-                    <a href="#" class="btn-agendar btn-overlay">Agendar Sessão</a>
+                    <a href="https://wa.me/+5532984058068?text=
+                    Olá%20Natália,%20gostaria%20de%20agendar%20uma%20sessão%20Presencial%20com%20você!"
+                    class="btn-agendar btn-overlay" target="_blank">Agendar Sessão</a>
                 </div>
                 <h2>Presencial</h2>
                 <p>
@@ -119,22 +123,22 @@
         <div class="contato-wrapper">
             <div class="contato-content">
                 <div class="contato-image">
-                    <a href="https://wa.me/+5532988097534">
+                    <a href="https://wa.me/+5532984058068">
                         <img src="images/whatsapp_icon.png" alt="WhatsApp" title="WhatsApp"/>
                     </a>
                 </div>
                 <div class="contato-texto">
-                    <p>WhatsApp: (32) 98809-7534</p>
+                    <p>WhatsApp: (32) 9 8405-8068</p>
                 </div>
             </div>
             <div class="contato-content">
                 <div class="contato-image">
-                    <a href="https://www.instagram.com/luiz_fernando.11/">
+                    <a href="https://www.instagram.com/nataliacabettepsi">
                         <img src="images/instagram_icon.png" alt="instagram" title="instagram"/>
                     </a>
                 </div>
                 <div class="contato-texto">
-                    <p>Instagram: @nataliaPSI</p>
+                    <p>Instagram: @nataliacabettepsi</p>
                 </div>
             </div>
             <div class="contato-content">

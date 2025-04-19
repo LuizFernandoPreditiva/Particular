@@ -395,6 +395,8 @@ html {
     max-width: 500px; /* limita a largura total */
     padding: 0 65px;   /* adiciona espaço nas laterais */
     margin: 0 auto;    /* centraliza horizontalmente */
+    word-wrap: break-word;
+    word-break: break-word;
 
     text-align: justify;
     font-size: 1.6rem;
@@ -522,6 +524,10 @@ html {
 .contato-texto {
     flex: 1;
     text-align: left;
+    min-width: 0;
+    margin: 0px 10px;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .contato-texto p {
