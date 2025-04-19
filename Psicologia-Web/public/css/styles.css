@@ -77,7 +77,7 @@ html {
 
 .menu-opener span {
     height: 3px;
-    background-color: #00567A;
+    background-color: var(--primary);
     border-radius: 2px;
 }
 
@@ -491,8 +491,8 @@ html {
     justify-content: flex-start;
     gap: 20px;
     width: 100%;
-    background-color: #fff;
-    border: 2px solid #eee;
+    background-color: var(--primary-foreground);
+    border: 2px solid var(--primary-light);
     border-radius: 16px;
     padding: 20px;
     transition: all 0.3s ease;
@@ -502,7 +502,7 @@ html {
 .contato-content:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    border-color: #ffa640; /* uma corzinha laranja para destaque */
+    border-color: var(--foreground);
 }
   
 .contato-image {
@@ -533,15 +533,6 @@ html {
 .contato-texto p {
     font-size: 1.5rem;
     font-weight: bold;
-}
-  
-.contato-texto a {
-    color: #0077cc;
-    text-decoration: none;
-}
-  
-.contato-texto a:hover {
-    text-decoration: underline;
 }
 
 /* Fim Contato */
@@ -644,33 +635,33 @@ footer .legal{
 /* Login */
 
 .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* altura da tela inteira */
+    background-color: var(--background); /* opcional, só pra visual ficar legal */
+}
+
+.login-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
-    padding: 20px;
-}
-  
-.login-box {
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
   
 h2 {
     margin-bottom: 20px;
     font-size: 28px;
     font-weight: bold;
+    text-align: center;
 }
   
 .icon {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     margin: 0 auto 30px;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #333;
-    color: white;
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -685,7 +676,7 @@ label {
     display: block;
     margin-top: 15px;
     font-size: 14px;
-    color: #555;
+    color: black;
 }
   
 input[type="email"],
@@ -702,7 +693,7 @@ input[type="email"],
   
 input[type="email"]:focus,
 .input-style:focus {
-    border-image: linear-gradient(to right, #00c6ff, #bc00dd) 1;
+    border-image: linear-gradient(to right, var(--foreground), var(--primary)) 1;
     border-bottom: 2px solid transparent;
 }
   
@@ -723,7 +714,7 @@ input[type="email"]:focus,
     width: 100%;
     padding: 12px;
     margin-top: 30px;
-    background: linear-gradient(to right, #00c6ff, #bc00dd);
+    background: linear-gradient(to right, var(--secundary-forefround), var(--primary));
     color: white;
     border: none;
     border-radius: 25px;
@@ -735,6 +726,17 @@ input[type="email"]:focus,
   
 .login-button:hover {
     opacity: 0.9;
+}
+
+#togglePasswordIcon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#togglePasswordIcon:hover {
+    transform: scale(1.1);
 }
 
 /* Fim Login */

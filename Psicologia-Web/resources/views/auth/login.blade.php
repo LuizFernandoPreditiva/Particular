@@ -9,7 +9,7 @@
     <div class="login-container">
         <div class="login-box">
             <h2>Bem Vindo</h2>
-            <div class="icon">A</div>
+            <a href="http://192.168.1.10/#home"><img src="{{ asset('images/logo.png') }}" alt="Logo" class="icon"></a>
     
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -31,7 +31,9 @@
                         placeholder="Password"
                         class="input-style"
                         required autocomplete="current-password" />
-                    <span class="eye" id="togglePassword">👁️</span>
+                        <span class="eye" id="togglePassword">
+                            <img id="togglePasswordIcon" src="{{ asset('images/lock_password_icon.png') }}" alt="Ver senha" />
+                        </span>
                 </div>
 
                 <!-- Remember Me -->
