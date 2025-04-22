@@ -1,33 +1,36 @@
-@extends('layouts.principal')
+@extends('layouts.principalLogado')
 
 @section('main')
 
-<h1>Novo atendimento:</h1>
+<div class="form-container">
 
-<form action="{{route('atendimentos.store')}}" method="post">
-    @csrf
+    <h1>Novo atendimento:</h1>
 
-    Paciente:
-    <select name="cliente_id">
-        <?php
-        foreach ($clientes as $cliente):
-        ?>
-            <option value='{{$cliente->id}}'>{{$cliente->nome}}</option>
-        <?php
-        endforeach;
-        ?>
-    </select><br>
-    Data de agendamento: <input type="date" name='dataAgendamento' required><br>
-    Hora do agendamento: <input type="time" name='horaAgendamento' required><br>
-    Data do atendimento: <input type="date" name='dataAtendido'><br>
-    Hora do atendimento: <input type="time" name='horaAtendido'><br>
-    Duracao: <input type="number" name='duracao'><br>
-    Falta: <input type='checkbox' name='falta' value="1"><br>
-    Trabalho: <textarea name='trabalho' maxlength="1000" rows="4" cols="50"></textarea><br>
-    Resumo: <textarea name='resumo' maxlength="1000" rows="4" cols="50"></textarea><br>
+    <form action="{{route('atendimentos.store')}}" method="post">
+        @csrf
 
-    <input  type="submit" value="Cadastrar">
-</form>
+        Paciente:
+        <select name="cliente_id">
+            <?php
+            foreach ($clientes as $cliente):
+            ?>
+                <option value='{{$cliente->id}}'>{{$cliente->nome}}</option>
+            <?php
+            endforeach;
+            ?>
+        </select><br>
+        Data de agendamento: <input type="date" name='dataAgendamento' required><br>
+        Hora do agendamento: <input type="time" name='horaAgendamento' required><br>
+        Data do atendimento: <input type="date" name='dataAtendido'><br>
+        Hora do atendimento: <input type="time" name='horaAtendido'><br>
+        Duracao: <input type="number" name='duracao'><br>
+        Falta: <input type='checkbox' name='falta' value="1"><br>
+        Trabalho: <textarea name='trabalho' maxlength="1000" rows="4" cols="50"></textarea><br>
+        Resumo: <textarea name='resumo' maxlength="1000" rows="4" cols="50"></textarea><br>
 
+        <input  type="submit" value="Cadastrar">
+    </form>
+
+</div>
 
 @endsection

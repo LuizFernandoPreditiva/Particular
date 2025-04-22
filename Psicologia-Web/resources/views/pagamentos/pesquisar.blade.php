@@ -1,15 +1,19 @@
-@extends('layouts.principal')
+@extends('layouts.principalLogado')
 
 @section('main')
 
-<h1>Pesquise pelo Nome:</h1>
+    <div class="form-container">
 
-<form action="{{route('pagamentos.buscar')}}" method="post">
-    @csrf
+        <h1>Pesquise pelo Nome:</h1>
 
-    Nome: <input type="text" name="nome" required><br><br>
+        <form action="{{route('pagamentos.buscar')}}" method="post">
+            @csrf
 
-    <input  type="submit" value="Buscar">
-</form>
+            Nome: <input type="text" name="nome" required><br><br>
+
+            <input  type="submit" value="Buscar">
+        </form>
+
+    </div>
 
 @endsection

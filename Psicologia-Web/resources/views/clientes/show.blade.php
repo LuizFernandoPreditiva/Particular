@@ -2,7 +2,6 @@
 
 @section('main')
 
-
     <h1>Cliente:</h1>
     ID: {{$cliente->id}}<br>
     Nome: {{$cliente->nome}}<br>
