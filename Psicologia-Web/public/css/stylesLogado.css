@@ -47,7 +47,7 @@ html {
 
 /* Header */
 
-.navbar {
+.navbarLogado {
     position: fixed;
     top: 0;
     left: 0;
@@ -66,7 +66,7 @@ html {
     height: 40px;
 }
 
-.menu-opener {
+.menuLogado-opener {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -75,14 +75,14 @@ html {
     cursor: pointer;
 }
 
-.menu-opener span {
+.menuLogado-opener span {
     height: 3px;
     background-color: var(--primary);
     border-radius: 2px;
 }
 
-.nav-links,
-.actions {
+.navLogado-links,
+.actionsLogado {
     display: none;
     flex-direction: column;
     width: 100%;
@@ -91,17 +91,17 @@ html {
     background-color: var(--background);
 }
 
-.nav-links.active,
-.actions.active {
+.navLogado-links.active,
+.actionsLogado.active {
     display: flex;
 }
 
-.nav-links {
+.navLogado-links {
     list-style: none;
     gap: 10px;
 }
 
-.nav-links a,
+.navLogado-links a,
 .login,
 .btn-agendar {
     text-decoration: none;
@@ -117,7 +117,7 @@ html {
 }
 
 .login:hover,
-.nav-links a:hover {
+.navLogado-links a:hover {
     color: var(--primary);
 }
  
@@ -230,16 +230,24 @@ footer .legal{
     border-collapse: collapse;
     position: relative;
     width: 90%;
-    max-width: 600px;
+    max-width: 400px;
     margin: 100px auto;
     text-align: center;
     background-color: var(--background);
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 
 .table-container thead, th, tr{
     border: 1px solid #000;
-    padding: 5px 30px;
+}
+
+.form-container{
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: var(--background);
+    font-size: 1.2rem;
 }
 
 
@@ -250,17 +258,17 @@ footer .legal{
     
     /* Header */
 
-    .menu-opener {
+    .menuLogado-opener {
         display: none;
     }
 
-    .navbar {
+    .navbarLogado {
         flex-wrap: nowrap;
         padding: 15px 50px;
         font-size: 1.4rem;
     }
 
-    .nav-links {
+    .navLogado-links {
         display: flex !important;
         flex-direction: row;
         gap: 20px;
@@ -269,7 +277,7 @@ footer .legal{
         background: none;
     }
 
-    .actions {
+    .actionsLogado {
         display: flex !important;
         flex-direction: row;
         gap: 15px;
@@ -278,7 +286,7 @@ footer .legal{
         background: none;
     }
 
-    .nav-links a.active::after {
+    .navLogado-links a.active::after {
         position: absolute;
         left: 0;
         bottom: -5px;
