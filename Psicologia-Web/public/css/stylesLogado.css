@@ -237,6 +237,11 @@ footer .legal{
     font-size: 1.2rem;
 }
 
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 .table-container thead, th, tr{
     border: 1px solid #000;
 }
@@ -300,5 +305,39 @@ footer .legal{
     }
 
     /* Fim Header*/
+
+    /* ------ Inicio Tabelas ------ */
+
+    .table-container{
+        border-collapse: collapse;
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        margin: 100px auto;
+        text-align: center;
+        background-color: var(--background);
+        font-size: 1.6rem;
+    }
+
+    .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table-container thead, th, tr{
+        border: 1px solid #000;
+    }
+
+    .form-container{
+        position: relative;
+        width: 90%;
+        max-width: 600px;
+        margin: 100px auto;
+        background-color: var(--background);
+        font-size: 1.4rem;
+    }
+
+
+/* ------ Fim Tabelas ------ */
 
 }
