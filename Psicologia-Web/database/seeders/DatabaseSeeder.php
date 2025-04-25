@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
             CreateClientesSeed::class
         ]);
 
-        \App\Models\Clientes::factory(5)->create();
+        \App\Models\Clientes::factory(20)->create();
     }
 }

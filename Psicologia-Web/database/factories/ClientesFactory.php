@@ -17,6 +17,7 @@ class ClientesFactory extends Factory
         $status = ['ativo', 'alta', 'inativo'];
 
         return [
+            'users_id' => random_int(1, 2),
             'nome' => $this->faker->name,
             'cpf' => '084',
             'telefone' => $this->faker->phoneNumber,

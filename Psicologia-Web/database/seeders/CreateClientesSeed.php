@@ -17,6 +17,7 @@ class CreateClientesSeed extends Seeder
     public function run()
     {
         DB::table('clientes')->insert([
+            'users_id' => '1',
             'nome' => 'Luiz',
             'cpf' => '08483171651',
             'telefone' => '(32)988097534',
