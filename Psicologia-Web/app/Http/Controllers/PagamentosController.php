@@ -143,7 +143,7 @@ class PagamentosController extends Controller
     {
         $nome = $request->input('nome');
 
-        $clientes = Clientes::where('nome', 'like', '%' . $nome . '%')->get();
+        $clientes = Clientes::where('users_id', auth()->id())->where('nome', 'like', '%' . $nome . '%')->get();
 
         return view('pagamentos.busca', ['clientes' => $clientes]);
     }

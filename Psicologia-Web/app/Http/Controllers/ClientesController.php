@@ -14,7 +14,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Clientes::orderBy('nome', 'asc')->get();
+        $clientes = Clientes::where('users_id', auth()->id())->orderBy('nome', 'asc')->get();
         return view("clientes.index", ['clientes' => $clientes]);
     }
 
@@ -43,7 +43,7 @@ class ClientesController extends Controller
 
         Clientes::create($data);
 
-        $clientes = Clientes::orderBy('nome', 'asc')->get();
+        $clientes = Clientes::where('users_id', auth()->id())->orderBy('nome', 'asc')->get();
         return view("clientes.index", ['clientes' => $clientes]);
     }
 
@@ -127,14 +127,14 @@ class ClientesController extends Controller
     {
         $nome = $request->input('nome');
 
-        $clientes = Clientes::where('nome', 'like', '%' . $nome . '%')->get();
+        $clientes = Clientes::where('users_id', auth()->id())->where('nome', 'like', '%' . $nome . '%')->get();
 
         return view('clientes.busca', ['clientes' => $clientes]);
     }
 
     public function ativo()
     {
-        $clientes = Clientes::where('status', 'ativo')->get();
+        $clientes = Clientes::where('users_id', auth()->id())->where('status', 'ativo')->get();
 
         return view('clientes.ativo', ['clientes' => $clientes]);
 
@@ -142,7 +142,7 @@ class ClientesController extends Controller
 
     public function alta()
     {
-        $clientes = Clientes::where('status', 'alta')->get();
+        $clientes = Clientes::where('users_id', auth()->id())->where('status', 'alta')->get();
 
         return view('clientes.alta', ['clientes' => $clientes]);
 
@@ -150,7 +150,7 @@ class ClientesController extends Controller
 
     public function inativo()
     {
-        $clientes = Clientes::where('status', 'inativo')->get();
+        $clientes = Clientes::where('users_id', auth()->id())->where('status', 'inativo')->get();
 
         return view('clientes.inativo', ['clientes' => $clientes]);
 

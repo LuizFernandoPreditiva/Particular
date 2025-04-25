@@ -25,7 +25,7 @@ class AtendimentosController extends Controller
      */
     public function create()
     {
-        $clientes = Clientes::all();
+        $clientes = Clientes::where('users_id', auth()->id())->get();
 
         return view('atendimentos.create', ['clientes' => $clientes]);
     }
@@ -201,7 +201,14 @@ class AtendimentosController extends Controller
 
     public function registro(Clientes $cliente)
     {
+        // Busca o cliente, garantindo que ele pertence ao usuário logado
+        $cliente = Clientes::where('id', $cliente->id)
+        ->where('users_id', auth()->id())
+        ->firstOrFail();
+
+        // Busca os atendimentos do cliente
         $atendimentos = Atendimentos::where('cliente_id', $cliente->id)->get();
+
         return view('atendimentos.registro', ['cliente' => $cliente, 'atendimentos' => $atendimentos]);
     }
 }
