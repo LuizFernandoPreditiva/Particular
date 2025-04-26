@@ -102,6 +102,10 @@ class AtendimentosController extends Controller
      */
     public function edit(Atendimentos $atendimento)
     {
+        if ($atendimento->cliente->users_id !== auth()->id()) {
+            abort(403, 'Acesso não autorizado.');
+        }
+
         return view('atendimentos.edit', compact('atendimento'));
     }
 

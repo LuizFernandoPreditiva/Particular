@@ -25,7 +25,12 @@ class PagamentosController extends Controller
      */
     public function create($id)
     {
-        $cliente = Clientes::findOrFail($id);
+
+        $cliente = Clientes::where('id', $id)
+        ->where('users_id', auth()->id())
+        ->firstOrFail();
+
+        //$cliente = Clientes::findOrFail($id);
         return view('pagamentos.create', compact('cliente'));
     }
 
@@ -69,6 +74,10 @@ class PagamentosController extends Controller
      */
     public function edit(Pagamentos $pagamento)
     {
+        if ($pagamento->cliente->users_id !== auth()->id()) {
+            abort(403, 'Acesso não autorizado.');
+        }
+
         return view('pagamentos.edit', compact('pagamento'));
     }
 
@@ -150,6 +159,15 @@ class PagamentosController extends Controller
 
     public function historico(Clientes $cliente)
     {
+
+        if ($cliente->users_id !== auth()->id()) {
+            abort(403, 'Acesso não autorizado.');
+        }else{
+            $cliente = Clientes::where('id', $cliente->id)
+            ->where('users_id', auth()->id())
+            ->firstOrFail();
+        }
+
         $pagamentos = Pagamentos::where('cliente_id', $cliente->id)->get();
         return view('pagamentos.historico', ['cliente' => $cliente, 'pagamentos' => $pagamentos]);
     }

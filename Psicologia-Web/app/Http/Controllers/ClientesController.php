@@ -57,6 +57,10 @@ class ClientesController extends Controller
     {
         //$cliente = Clientes::findOrFail($id);
         //return view('clientes.show', ['cliente' => $clientes]);
+        $cliente = Clientes::where('id', $cliente->id)
+        ->where('users_id', auth()->id())
+        ->firstOrFail();
+
         return view('clientes.show', compact('cliente'));
     }
 
@@ -68,6 +72,10 @@ class ClientesController extends Controller
      */
     public function edit(Clientes $cliente)
     {
+        $cliente = Clientes::where('id', $cliente->id)
+        ->where('users_id', auth()->id())
+        ->firstOrFail();
+
         return view('clientes.edit', compact('cliente'));
     }
 

@@ -15,7 +15,7 @@ class AlterTablePagamentos extends Migration
     {
         Schema::table('pagamentos', function (Blueprint $table) {
             $table->unsignedBigInteger('cliente_id')->after('id');
-            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
         });
     }
 
