@@ -262,6 +262,26 @@ footer .legal{
 
 /* ------ Fim Formularios ------ */
 
+/* form exibir cliente */
+
+.exibir-cliente{
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: 100px auto 10px auto;
+    background-color: var(--background);
+}
+
+.exibir-cliente h1 {
+    font-size: 1.6rem;
+}
+
+.exibir-cliente p {
+    font-size: 1.2rem;
+}
+
+/* ------ Fim form exibir cliente ------ */
+
 .teste {
     background-color: var(--background);
 }
@@ -381,5 +401,25 @@ footer .legal{
         font-size: 2rem;
         margin: 0;
     }
+
+    /* form exibir cliente */
+
+    .exibir-cliente{
+        position: relative;
+        width: 90%;
+        max-width: 600px;
+        margin: 100px auto 10px auto;
+        background-color: var(--background);
+    }
+
+    .exibir-cliente h1 {
+        font-size: 2rem;
+    }
+
+    .exibir-cliente p {
+        font-size: 1.4rem;
+    }
+
+    /* ------ Fim form exibir cliente ------ */
 
 }
