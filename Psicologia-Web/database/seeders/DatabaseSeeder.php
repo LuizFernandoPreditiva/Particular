@@ -19,10 +19,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CreateUserAdminSeed::class,
+            CreatePlanosSeed::class,
             CreateClientesSeed::class
         ]);
 
-        \App\Models\Clientes::factory(20)->create();
+        //\App\Models\Clientes::factory(20)->create();
         
     }
 }

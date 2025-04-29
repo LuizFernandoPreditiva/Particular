@@ -30,4 +30,12 @@ class Clientes extends Model
         return $this->hasMany(Atendimentos::class, 'cliente_id');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class, 'users_id');
+    }
+
+    public function plano(){
+        return $this->belongsTo(Planos::class, 'plano_id');
+    }
+
 }

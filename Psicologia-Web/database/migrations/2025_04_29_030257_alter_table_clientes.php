@@ -15,7 +15,10 @@ class AlterTableClientes extends Migration
     {
         Schema::table('clientes', function (Blueprint $table) {
             $table->unsignedBigInteger('users_id')->after('id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('planos_id')->nullable()->after('users_id'); 
+            $table->foreign('planos_id')->references('id')->on('planos')->onDelete('set null');
         });
     }
 
@@ -29,6 +32,9 @@ class AlterTableClientes extends Migration
         Schema::table('clientes', function (Blueprint $table) {
             $table->dropForeign('clientes_users_id_foreign');
             $table->dropColumn('users_id');
+
+            $table->dropForeign('clientes_planos_id_foreign');
+            $table->dropColumn('planos_id');
         });
     }
 }
