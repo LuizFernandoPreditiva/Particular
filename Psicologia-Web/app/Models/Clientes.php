@@ -19,7 +19,9 @@ class Clientes extends Model
         'saldo',
         'atendimentos',
         'faltas',
-        'status'
+        'status',
+        'users_id',
+        'planos_id'
     ];
 
     public function pagamentos(){

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clientes;
+use App\Models\Planos;
 use Illuminate\Http\Request;
 
 class ClientesController extends Controller
@@ -25,7 +26,8 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        return view('clientes.create');
+        $planos = Planos::all();
+        return view('clientes.create', compact('planos'));
     }
 
     /**
@@ -40,11 +42,12 @@ class ClientesController extends Controller
         $data['saldo'] = 0;
         $data['atendimentos'] = 0;
         $data['faltas'] = 0;
+        $data['users_id'] = auth()->id();
 
         Clientes::create($data);
 
         $clientes = Clientes::where('users_id', auth()->id())->orderBy('nome', 'asc')->get();
-        return view("clientes.index", ['clientes' => $clientes]);
+        return redirect()->route("clientes.index", ['clientes' => $clientes]);
     }
 
     /**

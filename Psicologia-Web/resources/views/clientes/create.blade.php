@@ -21,6 +21,14 @@
                 <option value="alta">De alta</option>
                 <option value="inativo">Desistencia</option>
             </select><br><br>
+            Plano:
+            <select name="planos_id">
+                @foreach ($planos as $index => $plano)
+                    <option value="{{ $plano->id }}" {{ $index === 0 ? 'selected' : '' }}>
+                    {{ $plano->nome }}
+                    </option>
+                @endforeach
+            </select><br><br>
 
             <input  type="submit" value="Cadastrar">
         </form>
