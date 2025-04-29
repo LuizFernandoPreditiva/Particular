@@ -78,8 +78,9 @@ class ClientesController extends Controller
         $cliente = Clientes::where('id', $cliente->id)
         ->where('users_id', auth()->id())
         ->firstOrFail();
+        $planos = Planos::all();
 
-        return view('clientes.edit', compact('cliente'));
+        return view('clientes.edit', compact('cliente', 'planos'));
     }
 
     /**

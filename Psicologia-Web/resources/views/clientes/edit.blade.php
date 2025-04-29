@@ -19,6 +19,14 @@
                     <option value="alta" @if ($cliente->status == 'alta') selected @endif>De alta</option>
                     <option value="inativo" @if ($cliente->status == 'inativo') selected @endif>Desistencia</option>
                 </select><br><br>
+            Plano:
+            <select name="plano_id" required>
+                @foreach($planos as $plano)
+                    <option value="{{ $plano->id }}" @if ($cliente->plano_id == $plano->id) selected @endif>
+                        {{ $plano->nome }}
+                    </option>
+                @endforeach
+            </select><br><br>
 
             <input  type="submit" class="btn btn-primary" value="Salvar">
         </form>
