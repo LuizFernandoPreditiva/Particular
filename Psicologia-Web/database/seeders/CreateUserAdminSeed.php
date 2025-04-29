@@ -19,12 +19,20 @@ class CreateUserAdminSeed extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'admin',
+                'status' => 'administrador',
                 'email' => 'admin@admin',
                 'password' => Hash::make('123')
             ],
             [
-                'name' => 'admin',
+                'name' => 'psicologo',
+                'status' => 'psicologo',
                 'email' => 'admin2@admin',
+                'password' => Hash::make('123')
+            ],
+            [
+                'name' => 'atendente',
+                'status' => 'atendente',
+                'email' => 'admin3@admin',
                 'password' => Hash::make('123')
             ]
         ]);
