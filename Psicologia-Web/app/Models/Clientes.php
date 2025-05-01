@@ -37,7 +37,7 @@ class Clientes extends Model
     }
 
     public function plano(){
-        return $this->belongsTo(Planos::class, 'plano_id');
+        return $this->belongsTo(Planos::class, 'planos_id');
     }
 
 }

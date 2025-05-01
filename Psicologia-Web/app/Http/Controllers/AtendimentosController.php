@@ -75,12 +75,25 @@ class AtendimentosController extends Controller
         $atendimentos = $cliente->atendimentos;
         $atendimentos += 1;
 
-        $cliente->update([
-            'faltas' => $faltas,
-            'atendimentos' => $atendimentos,
-        ]);
+        //Calcula o valor do plano para abater no saldo
+        //se tiver inserido com data de finalizacao
+        if($dataHoraAtendido != null){
+            $valorPlano = $cliente->plano ? $cliente->plano->valor : 0;
 
-        return redirect()->route('clientes.show', ['cliente' => $cliente]);
+            $cliente->update([
+                'faltas' => $faltas,
+                'atendimentos' => $atendimentos,
+                'saldo' => $cliente->saldo - $valorPlano,
+            ]);
+
+        }else{
+            $cliente->update([
+                'faltas' => $faltas,
+                'atendimentos' => $atendimentos,
+            ]);
+        }
+
+        return redirect()->route('clientes.show', ['cliente' => $cliente->fresh()]);
     }
 
     /**
@@ -160,10 +173,32 @@ class AtendimentosController extends Controller
         $faltas = $cliente->faltas;
         $faltas += $faltaNova;
 
-        $cliente->update([
-            'faltas' => $faltas,
-            'atendimentos' => $atendimentos,
-        ]);
+        //Calcula o valor do plano para abater no saldo
+        //se tiver inserido sem data de hora atendido
+        $valorPlano = $cliente->plano ? $cliente->plano->valor : 0;
+
+        if ($atendimento->atendido !== null && $dataHoraAtendido === null) {
+            $cliente->update([
+                'faltas' => $faltas,
+                'atendimentos' => $atendimentos,
+                'saldo' => $cliente->saldo + $valorPlano,
+            ]);
+        }
+        // Se não era atendido e agora é → descontar
+        elseif ($atendimento->atendido === null && $dataHoraAtendido !== null) {
+            $cliente->update([
+                'faltas' => $faltas,
+                'atendimentos' => $atendimentos,
+                'saldo' => $cliente->saldo - $valorPlano,
+            ]);
+        }
+        // Nenhuma mudança no status de atendimento
+        else {
+            $cliente->update([
+                'faltas' => $faltas,
+                'atendimentos' => $atendimentos,
+            ]);
+        }
 
         return redirect()->route('atendimentos.registro', ['cliente' => $cliente, 'atendimentos' => $cliente->atendimentos]);
     }
