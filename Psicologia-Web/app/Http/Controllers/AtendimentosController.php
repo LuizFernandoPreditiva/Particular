@@ -230,19 +230,32 @@ class AtendimentosController extends Controller
         }else{
             $falta = 0;
         }
+        
+        $dataHoraAtendido = $atendimento->atendido;
 
         $faltas = $cliente->faltas;
         $faltas += $falta;
 
-        $atendimento->delete();
-
         $atendimentos = $cliente->atendimentos;
         $atendimentos -= 1;
 
-        $cliente->update([
-            'faltas' => $faltas,
-            'atendimentos' => $atendimentos,
-        ]);
+        $valorPlano = $cliente->plano ? $cliente->plano->valor : 0;
+
+        if ($atendimento->atendido !== null) {
+            $cliente->update([
+                'faltas' => $faltas,
+                'atendimentos' => $atendimentos,
+                'saldo' => $cliente->saldo + $valorPlano,
+            ]);
+        }
+        else {
+            $cliente->update([
+                'faltas' => $faltas,
+                'atendimentos' => $atendimentos,
+            ]);
+        }
+
+        $atendimento->delete();
 
         $atendimentos = Atendimentos::where('cliente_id', $cliente->id)->get();
 
