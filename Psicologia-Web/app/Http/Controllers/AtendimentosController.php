@@ -155,14 +155,14 @@ class AtendimentosController extends Controller
         }
         //fim do calculo
 
-        $atendimento->update([
+        /*$atendimento->update([
             'agendamento' => $dataHoraAgendamento,
             'atendido' => $dataHoraAtendido,
             'duracao' => $request->input('duracao'),
             'falta' => $falta,
             'trabalho' => $request->input('trabalho'),
             'resumo' => $request->input('resumo')
-        ]);
+        ]);*/
 
         $cliente = Clientes::findOrFail($request->input('cliente_id'));
 
@@ -176,6 +176,8 @@ class AtendimentosController extends Controller
         //Calcula o valor do plano para abater no saldo
         //se tiver inserido sem data de hora atendido
         $valorPlano = $cliente->plano ? $cliente->plano->valor : 0;
+
+        //dd($atendimento->atendido);
 
         if ($atendimento->atendido !== null && $dataHoraAtendido === null) {
             $cliente->update([
@@ -199,6 +201,15 @@ class AtendimentosController extends Controller
                 'atendimentos' => $atendimentos,
             ]);
         }
+
+        $atendimento->update([
+            'agendamento' => $dataHoraAgendamento,
+            'atendido' => $dataHoraAtendido,
+            'duracao' => $request->input('duracao'),
+            'falta' => $falta,
+            'trabalho' => $request->input('trabalho'),
+            'resumo' => $request->input('resumo')
+        ]);
 
         return redirect()->route('atendimentos.registro', ['cliente' => $cliente, 'atendimentos' => $cliente->atendimentos]);
     }
