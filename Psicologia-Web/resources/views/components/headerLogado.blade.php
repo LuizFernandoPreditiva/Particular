@@ -50,6 +50,17 @@
                     </ul>
                 </div>
             </li>
+            <li>
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="{{route('planos.index')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Planos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{route('planos.index')}}">Lista</a></li>
+                        <li><a class="dropdown-item" href="{{route('planos.create')}}">Novo</a></li>
+                    </ul>
+                </div>
+            </li>
         </ul>
 
         <div class="actionsLogado">

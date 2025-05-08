@@ -3,6 +3,7 @@
 use App\Http\Controllers\AtendimentosController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\PagamentosController;
+use App\Http\Controllers\PlanosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,3 +81,9 @@ Route::resource('/atendimentos', AtendimentosController::class)->middleware(['au
 Route::get('/atendimentos/registro/{cliente}', [AtendimentosController::class, 'registro'])->name('atendimentos.registro')->middleware(['auth']);
 
 //-------------------End Atendimentos-------------------
+
+//-------------------Planos-------------------
+
+Route::resource('/planos', PlanosController::class)->middleware(['auth']);
+
+//-------------------End Planos-------------------

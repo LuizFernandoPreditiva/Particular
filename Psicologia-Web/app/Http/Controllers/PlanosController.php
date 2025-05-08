@@ -14,7 +14,9 @@ class PlanosController extends Controller
      */
     public function index()
     {
-        //
+        $planos = Planos::all();
+
+        return view("planos.index", ['planos' => $planos]);
     }
 
     /**
@@ -24,7 +26,7 @@ class PlanosController extends Controller
      */
     public function create()
     {
-        //
+        return view('planos.create');
     }
 
     /**
@@ -35,7 +37,13 @@ class PlanosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        Planos::create($data);
+
+        $planos = Planos::all();
+
+        return redirect()->route("planos.index", compact('planos'));
     }
 
     /**
