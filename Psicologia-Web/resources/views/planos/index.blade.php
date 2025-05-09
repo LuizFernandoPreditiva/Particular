@@ -21,8 +21,14 @@
                     <td><?= $pl->nome ?></td>
                     <td><?= $pl->descricao ?></td>
                     <td><?= $pl->valor ?></td>
-                    <td><a href="{{route('atendimentos.edit', $pl->id )}}">Editar</a></td>
-                    <td><a href="{{route('atendimentos.destroy', $pl )}}">Excluir</a></td>
+                    <td><a href="{{route('planos.edit', $pl->id )}}">Editar</a></td>
+                    <td>
+                        <form action="{{route('planos.destroy', $pl)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-primary">Deletar</button>
+                        </form>
+                    </td>
                 </tr>
                 <?php
                     endforeach;

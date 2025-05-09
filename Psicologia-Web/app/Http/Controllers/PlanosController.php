@@ -90,8 +90,12 @@ class PlanosController extends Controller
      * @param  \App\Models\Planos  $planos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Planos $planos)
+    public function destroy(Planos $plano)
     {
-        //
+        $plano->delete();
+
+        $planos = Planos::where('users_id', auth()->id())->orderBy('nome', 'asc')->get();
+
+        return redirect()->route("planos.index", compact('planos'));
     }
 }

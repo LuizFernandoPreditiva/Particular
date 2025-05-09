@@ -16,9 +16,12 @@ class Planos extends Model
         'users_id',
     ];
 
-    public function planos(){
-        return $this->hasMany(Planos::class, 'planos_id');
+    public function clientes(){
+        return $this->hasMany(Clientes::class, 'plano_id');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class, 'users_id');
+    }
 
 }
