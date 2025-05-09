@@ -26,7 +26,8 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        $planos = Planos::all();
+        $planos = Planos::where('users_id', auth()->id())->get();
+        
         return view('clientes.create', compact('planos'));
     }
 
@@ -78,7 +79,8 @@ class ClientesController extends Controller
         $cliente = Clientes::where('id', $cliente->id)
         ->where('users_id', auth()->id())
         ->firstOrFail();
-        $planos = Planos::all();
+        
+        $planos = Planos::where('users_id', auth()->id())->get();
 
         return view('clientes.edit', compact('cliente', 'planos'));
     }

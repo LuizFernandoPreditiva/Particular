@@ -14,9 +14,11 @@ class PlanosController extends Controller
      */
     public function index()
     {
-        $planos = Planos::all();
+        $planos = Planos::where('users_id', auth()->id())
+            ->orderBy('nome', 'asc')->get();
 
         return view("planos.index", ['planos' => $planos]);
+
     }
 
     /**
@@ -38,10 +40,12 @@ class PlanosController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data['users_id'] = auth()->id();
 
         Planos::create($data);
 
-        $planos = Planos::all();
+        $planos = Planos::where('users_id', auth()->id())
+            ->orderBy('nome', 'asc')->get();
 
         return redirect()->route("planos.index", compact('planos'));
     }

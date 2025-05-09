@@ -46,4 +46,8 @@ class User extends Authenticatable
     public function clientes(){
         return $this->hasMany(Clientes::class, 'users_id');
     }
+
+    public function planos(){
+        return $this->hasMany(Planos::class, 'users_id');
+    }
 }

@@ -12,11 +12,12 @@ class Planos extends Model
     protected $fillable = [
         'nome',
         'descricao',
-        'valor'
+        'valor',
+        'users_id',
     ];
 
-    public function clientes(){
-        return $this->hasMany(Clientes::class, 'plano_id');
+    public function planos(){
+        return $this->hasMany(Planos::class, 'planos_id');
     }
 
 
