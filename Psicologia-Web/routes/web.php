@@ -79,6 +79,7 @@ Route::get('/pagamentos/historico/{paciente}', [PagamentosController::class, 'hi
 Route::resource('/atendimentos', AtendimentosController::class)->middleware(['auth']);
 
 Route::get('/atendimentos/registro/{paciente}', [AtendimentosController::class, 'registro'])->name('atendimentos.registro')->middleware(['auth']);
+Route::get('/agenda', [AtendimentosController::class, 'agenda'])->name('atendimentos.agenda')->middleware(['auth']);
 
 //-------------------End Atendimentos-------------------
 

@@ -61,6 +61,11 @@
                     </ul>
                 </div>
             </li>
+            <li>
+                <div class="menuBarLogado">
+                    <a href="{{route('atendimentos.agenda')}}">Agenda</a>
+                </div>
+            </li>
         </ul>
 
         <div class="actionsLogado">

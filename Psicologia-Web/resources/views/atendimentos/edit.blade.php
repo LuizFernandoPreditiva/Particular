@@ -28,6 +28,7 @@
             Resumo: <textarea name='resumo' maxlength="1000" rows="4" cols="50">{{$atendimento->resumo}}</textarea><br>
 
             <input  type="submit" value="Alterar">
+            <a class="btn btn-primary" href="{{ url()->previous() }}" role="button">Voltar</a>
 
         </form>
 

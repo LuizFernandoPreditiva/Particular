@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Atendimentos;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AtendimentosController extends Controller
@@ -141,11 +142,11 @@ class AtendimentosController extends Controller
             abort(404);
         }
 
-        if (auth()->user()->rules_id === 2 && $atendimentos->paciente->user_id !== auth()->id()) {
+        if (auth()->user()->rules_id === 4 && $atendimentos->paciente->id !== auth()->id()) {
             abort(403, 'Acesso nao autorizado.');
         }
 
-        if (auth()->user()->rules_id === 4) {
+        if (auth()->user()->rules_id === 2 && $atendimentos->paciente->user_id !== auth()->id()) {
             abort(403, 'Acesso nao autorizado.');
         }
 
@@ -344,5 +345,45 @@ class AtendimentosController extends Controller
         $atendimentos = Atendimentos::where('user_id', $paciente->id)->get();
 
         return view('atendimentos.registro', ['paciente' => $paciente, 'atendimentos' => $atendimentos]);
+    }
+
+    public function agenda(Request $request)
+    {
+        $weekStart = Carbon::parse($request->query('week', Carbon::now()))
+            ->startOfWeek(Carbon::MONDAY)
+            ->startOfDay();
+        $weekEnd = $weekStart->copy()->addDays(7);
+
+        $query = Atendimentos::with(['paciente.psicologo'])
+            ->whereBetween('agendamento', [$weekStart, $weekEnd])
+            ->whereHas('paciente', function ($query) {
+                $query->where('rules_id', 4);
+            });
+
+        if (auth()->user()->rules_id === 2) {
+            $query->whereHas('paciente', function ($query) {
+                $query->where('user_id', auth()->id());
+            });
+        } elseif (auth()->user()->rules_id === 4) {
+            $query->where('user_id', auth()->id());
+        }
+
+        $atendimentos = $query->orderBy('agendamento')->get();
+
+        $agenda = [];
+        foreach ($atendimentos as $atendimento) {
+            $data = Carbon::parse($atendimento->agendamento);
+            $dayKey = $data->toDateString();
+            $hourKey = (int) $data->format('H');
+            $agenda[$dayKey][$hourKey][] = $atendimento;
+        }
+
+        return view('atendimentos.agenda', [
+            'agenda' => $agenda,
+            'weekStart' => $weekStart,
+            'weekEnd' => $weekEnd->copy()->subDay(),
+            'isAdminOrAtendente' => in_array(auth()->user()->rules_id, [1, 3], true),
+            'canEdit' => auth()->user()->rules_id !== 4,
+        ]);
     }
 }
