@@ -19,7 +19,18 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'rules_id',
+        'user_id',
+        'planos_id',
+        'cpf',
+        'telefone',
+        'endereco',
+        'cidade',
+        'estado',
         'status',
+        'atendimentos',
+        'faltas',
+        'saldo',
         'email',
         'password',
     ];
@@ -43,11 +54,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function clientes(){
-        return $this->hasMany(Clientes::class, 'users_id');
+    public function pacientes(){
+        return $this->hasMany(User::class, 'user_id');
+    }
+
+    public function psicologo(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function planos(){
-        return $this->hasMany(Planos::class, 'users_id');
+        return $this->hasMany(Planos::class, 'user_id');
+    }
+
+    public function plano(){
+        return $this->belongsTo(Planos::class, 'planos_id');
+    }
+
+    public function atendimentos(){
+        return $this->hasMany(Atendimentos::class, 'user_id');
+    }
+
+    public function pagamentos(){
+        return $this->hasMany(Pagamentos::class, 'user_id');
     }
 }

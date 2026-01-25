@@ -14,12 +14,12 @@
             </thead>
             <tbody>
                 <?php
-                    foreach($clientes as $cliente):
+                    foreach($pacientes as $paciente):
                 ?>
                 <tr>
-                    <td><?= $cliente->nome ?></td>
-                    <td><a class="btn btn-primary" href="{{route('pagamentos.novo', ['id' => $cliente->id ] )}}" role="button">X</a></td>
-                    <td><a class="btn btn-primary" href="{{route('pagamentos.historico', $cliente )}}" role="button">X</a></td>
+                    <td><?= $paciente->name ?></td>
+                    <td><a class="btn btn-primary" href="{{route('pagamentos.novo', ['id' => $paciente->id ] )}}" role="button">X</a></td>
+                    <td><a class="btn btn-primary" href="{{route('pagamentos.historico', $paciente )}}" role="button">X</a></td>
                 </tr>
                 <?php
                     endforeach;

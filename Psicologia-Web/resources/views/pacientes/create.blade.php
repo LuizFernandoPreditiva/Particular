@@ -1,0 +1,52 @@
+@extends('layouts.principalLogado')
+
+@section('main')
+
+    <div class="form-container">
+        
+        <h1>Novo paciente:</h1>
+
+        <form action="{{route('pacientes.store')}}" method="post">
+            @csrf
+
+            Nome: <input type="text" name="name" required><br><br>
+            Email: <input type="email" name="email" required><br><br>
+            Senha: <input type="password" name="password" required><br><br>
+            CPF: <input type="text" name="cpf"><br><br>
+            Telefone: <input type="text" name="telefone"><br><br>
+            Endereco: <input type="text" name="endereco"><br><br>
+            Cidade: <input type="text" name="cidade"><br><br>
+            Estado: <input type="text" name="estado"><br><br>
+            Status:
+            <select name="status">
+                <option value="ativo">Em atendimento</option>
+                <option value="alta">De alta</option>
+                <option value="inativo">Desistencia</option>
+            </select><br><br>
+            @if (auth()->user()->rules_id === 2)
+                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+            @elseif (auth()->user()->rules_id === 1 || auth()->user()->rules_id === 3)
+                Psicologo:
+                <select name="user_id" required>
+                    @foreach ($psicologos as $index => $psicologo)
+                        <option value="{{ $psicologo->id }}" {{ $index === 0 ? 'selected' : '' }}>
+                        {{ $psicologo->name }}
+                        </option>
+                    @endforeach
+                </select><br><br>
+            @endif
+            Plano:
+            <select name="planos_id">
+                @foreach ($planos as $index => $plano)
+                    <option value="{{ $plano->id }}" {{ $index === 0 ? 'selected' : '' }}>
+                    {{ $plano->nome }}
+                    </option>
+                @endforeach
+            </select><br><br>
+
+            <input  type="submit" value="Cadastrar">
+        </form>
+
+    </div>
+
+@endsection

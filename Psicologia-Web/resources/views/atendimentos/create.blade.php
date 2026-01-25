@@ -10,11 +10,12 @@
         @csrf
 
         Paciente:
-        <select name="cliente_id">
+        <select name="user_id">
             <?php
-            foreach ($clientes as $cliente):
+            foreach ($pacientes as $paciente):
+                $selecionado = request('user_id') == $paciente->id ? 'selected' : '';
             ?>
-                <option value='{{$cliente->id}}'>{{$cliente->nome}}</option>
+                <option value='{{$paciente->id}}' {{$selecionado}}>{{$paciente->name}}</option>
             <?php
             endforeach;
             ?>

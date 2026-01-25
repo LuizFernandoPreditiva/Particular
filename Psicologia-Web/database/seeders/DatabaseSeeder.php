@@ -18,9 +18,12 @@ class DatabaseSeeder extends Seeder
         
 
         $this->call([
+            CreateRulesSeed::class,
             CreateUserAdminSeed::class,
             CreatePlanosSeed::class,
-            CreateClientesSeed::class
+            CreatePacientesSeed::class,
+            CreatePagamentosSeed::class,
+            CreateAtendimentosSeed::class
         ]);
 
         //\App\Models\Clientes::factory(20)->create();

@@ -21,7 +21,7 @@ class CreatePlanosSeed extends Seeder
                 'nome' => 'Particular',
                 'descricao' => 'Voltado a clientes pagando por conta propria',
                 'valor' => 100.00,
-                'users_id' => 1,
+                'user_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -29,7 +29,7 @@ class CreatePlanosSeed extends Seeder
                 'nome' => 'UNIMED',
                 'descricao' => 'Voltado a clientes com guias da unimed',
                 'valor' => 75.00,
-                'users_id' => 1,
+                'user_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]

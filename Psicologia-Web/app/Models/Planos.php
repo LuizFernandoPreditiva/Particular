@@ -13,15 +13,15 @@ class Planos extends Model
         'nome',
         'descricao',
         'valor',
-        'users_id',
+        'user_id',
     ];
 
-    public function clientes(){
-        return $this->hasMany(Clientes::class, 'plano_id');
+    public function pacientes(){
+        return $this->hasMany(User::class, 'planos_id');
     }
 
     public function user(){
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

@@ -4,10 +4,10 @@
 
     <div class="table-container">
 
-        <h1>Cliente:</h1>
-        ID: {{$cliente->id}}<br>
-        Nome: {{$cliente->nome}} -> <a href="{{route('clientes.show', $cliente->id )}}">ver</a><br>
-        Saldo: R${{$cliente->saldo}}<br><br>
+        <h1>Paciente:</h1>
+        ID: {{$paciente->id}}<br>
+        Nome: {{$paciente->name}} -> <a href="{{route('pacientes.show', $paciente->id )}}">ver</a><br>
+        Saldo: R${{$paciente->saldo}}<br><br>
 
         <table>
             <thead>

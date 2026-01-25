@@ -21,6 +21,18 @@
                 <option value="alta">De alta</option>
                 <option value="inativo">Desistencia</option>
             </select><br><br>
+            @if (auth()->user()->rules_id === 2)
+                <input type="hidden" name="users_id" value="{{ auth()->id() }}">
+            @elseif (auth()->user()->rules_id === 1 || auth()->user()->rules_id === 3)
+                Psicologo:
+                <select name="users_id" required>
+                    @foreach ($psicologos as $index => $psicologo)
+                        <option value="{{ $psicologo->id }}" {{ $index === 0 ? 'selected' : '' }}>
+                        {{ $psicologo->name }}
+                        </option>
+                    @endforeach
+                </select><br><br>
+            @endif
             Plano:
             <select name="planos_id">
                 @foreach ($planos as $index => $plano)

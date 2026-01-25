@@ -10,16 +10,16 @@ class Pagamentos extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cliente_id',
+        'user_id',
         'descricao',
         'forma',
         'parcelas',
         'valor'
     ];
 
-    public function cliente()
+    public function paciente()
     {
-        return $this->belongsTo(Clientes::class, 'cliente_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

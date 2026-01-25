@@ -13,20 +13,7 @@ class CreateTableClientes extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->string('cpf');
-            $table->string('telefone');
-            $table->string('endereco');
-            $table->string('cidade');
-            $table->string('estado');
-            $table->string('status');
-            $table->integer('atendimentos');
-            $table->integer('faltas');
-            $table->double('saldo');
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -36,6 +23,6 @@ class CreateTableClientes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientes');
+        //
     }
 }

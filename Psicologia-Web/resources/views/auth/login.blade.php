@@ -23,12 +23,12 @@
 
                 <!-- Password -->
                 <div class="mt-4 password-field">
-                    <x-label for="password" :value="__('Password')" placeholder="Password" required />
+                    <x-label for="password" :value="__('Senha')" placeholder="Senha" required />
 
                     <x-input id="password"
                         type="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder="Senha"
                         class="input-style"
                         required autocomplete="current-password" />
                         <span class="eye" id="togglePassword">
@@ -40,7 +40,7 @@
                 <div class="block mt-4">
                     <label for="remember_me" class="inline-flex items-center">
                         <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                        <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        <span class="ml-2 text-sm text-gray-600">{{ __('Lembrar de mim') }}</span>
                     </label>
                 </div>
 

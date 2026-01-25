@@ -15,6 +15,7 @@ class CreateTableAtendimentos extends Migration
     {
         Schema::create('atendimentos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->timestamp('agendamento');
             $table->timestamp('atendido')->nullable();
             $table->Integer('duracao')->nullable();

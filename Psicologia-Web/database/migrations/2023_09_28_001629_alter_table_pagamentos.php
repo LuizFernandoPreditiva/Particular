@@ -13,10 +13,7 @@ class AlterTablePagamentos extends Migration
      */
     public function up()
     {
-        Schema::table('pagamentos', function (Blueprint $table) {
-            $table->unsignedBigInteger('cliente_id')->after('id');
-            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
-        });
+        //
     }
 
     /**
@@ -26,9 +23,6 @@ class AlterTablePagamentos extends Migration
      */
     public function down()
     {
-        Schema::table('pagamentos', function (Blueprint $table) {
-            $table->dropForeign('pagamentos_cliente_id_foreign');
-            $table->dropColumn('cliente_id');
-        });
+        //
     }
 }

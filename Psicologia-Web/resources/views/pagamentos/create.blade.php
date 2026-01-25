@@ -4,12 +4,12 @@
 
     <div class="form-container">
 
-        Paciente: {{$cliente->nome}}<br><br>
+        Paciente: {{$paciente->name}}<br><br>
 
         <form action="{{route('pagamentos.store')}}" method="post">
             @csrf
 
-            <input type="hidden" name="cliente_id" value="{{$cliente->id}}">
+            <input type="hidden" name="user_id" value="{{$paciente->id}}">
 
             Descricao: <input type="text" name="descricao" required><br><br>
             Forma:

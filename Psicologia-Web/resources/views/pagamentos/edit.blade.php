@@ -8,7 +8,7 @@
             @csrf
             @method('PUT')
 
-            <input type="hidden" name="cliente_id" value="{{$pagamento->cliente_id}}">
+            <input type="hidden" name="user_id" value="{{$pagamento->user_id}}">
 
             Descricao: <input type="text" name="descricao" value="{{$pagamento->descricao}}" required><br><br>
             Forma:

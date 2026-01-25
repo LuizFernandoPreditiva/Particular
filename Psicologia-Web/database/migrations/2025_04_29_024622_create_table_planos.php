@@ -15,6 +15,7 @@ class CreateTablePlanos extends Migration
     {
         Schema::create('planos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nome');
             $table->string('descricao');
             $table->double('valor');

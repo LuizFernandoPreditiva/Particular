@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AtendimentosController;
-use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\PagamentosController;
 use App\Http\Controllers\PlanosController;
 use Illuminate\Support\Facades\Route;
@@ -46,17 +46,17 @@ Route::get('/logado', function () {
 
 //-------------------Clientes-------------------
 
-Route::resource('/clientes', ClientesController::class)->middleware(['auth']);
+Route::resource('/pacientes', PacientesController::class)->middleware(['auth']);
 
-Route::get('/clientes/pesquisar/nome', [ClientesController::class, 'pesquisar'])->name('clientes.pesquisar');
+Route::get('/pacientes/pesquisar/nome', [PacientesController::class, 'pesquisar'])->name('pacientes.pesquisar');
 
-Route::post('/clientes/buscar', [ClientesController::class, 'buscar'])->name('clientes.buscar')->middleware(['auth']);
+Route::post('/pacientes/buscar', [PacientesController::class, 'buscar'])->name('pacientes.buscar')->middleware(['auth']);
 
-Route::get('/clientes/status/ativo', [ClientesController::class, 'ativo'])->name('clientes.ativo');
+Route::get('/pacientes/status/ativo', [PacientesController::class, 'ativo'])->name('pacientes.ativo');
 
-Route::get('/clientes/status/alta', [ClientesController::class, 'alta'])->name('clientes.alta');
+Route::get('/pacientes/status/alta', [PacientesController::class, 'alta'])->name('pacientes.alta');
 
-Route::get('/clientes/status/inativo', [ClientesController::class, 'inativo'])->name('clientes.inativo');
+Route::get('/pacientes/status/inativo', [PacientesController::class, 'inativo'])->name('pacientes.inativo');
 
 //-------------------End Clientes-------------------
 
@@ -70,7 +70,7 @@ Route::get('/pagamentos/pesquisar/nome', [PagamentosController::class, 'pesquisa
 
 Route::post('/pagamentos/buscar', [PagamentosController::class, 'buscar'])->name('pagamentos.buscar')->middleware(['auth']);
 
-Route::get('/pagamentos/historico/{cliente}', [PagamentosController::class, 'historico'])->name('pagamentos.historico')->middleware(['auth']);
+Route::get('/pagamentos/historico/{paciente}', [PagamentosController::class, 'historico'])->name('pagamentos.historico')->middleware(['auth']);
 
 //-------------------End Pagamentos-------------------
 
@@ -78,7 +78,7 @@ Route::get('/pagamentos/historico/{cliente}', [PagamentosController::class, 'his
 
 Route::resource('/atendimentos', AtendimentosController::class)->middleware(['auth']);
 
-Route::get('/atendimentos/registro/{cliente}', [AtendimentosController::class, 'registro'])->name('atendimentos.registro')->middleware(['auth']);
+Route::get('/atendimentos/registro/{paciente}', [AtendimentosController::class, 'registro'])->name('atendimentos.registro')->middleware(['auth']);
 
 //-------------------End Atendimentos-------------------
 

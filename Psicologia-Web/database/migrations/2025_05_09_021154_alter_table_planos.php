@@ -13,12 +13,7 @@ class AlterTablePlanos extends Migration
      */
     public function up()
     {
-        Schema::table('planos', function (Blueprint $table) {
-            $table->unsignedBigInteger('users_id')->after('id');
-
-            $table->foreign('users_id')->references('id')->on('users')
-                ->onDelete('cascade');
-        });
+        //
     }
 
     /**
@@ -28,9 +23,6 @@ class AlterTablePlanos extends Migration
      */
     public function down()
     {
-        Schema::table('planos', function (Blueprint $table) {
-            $table->dropForeign(['users_id']);
-            $table->dropColumn('users_id');
-        });
+        //
     }
 }

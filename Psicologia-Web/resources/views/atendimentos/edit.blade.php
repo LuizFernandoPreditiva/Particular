@@ -8,7 +8,7 @@
             @csrf
             @method('PUT')
 
-            <input type="hidden" name="cliente_id" value="{{$atendimento->cliente_id}}">
+            <input type="hidden" name="user_id" value="{{$atendimento->user_id}}">
 
             Data de agendamento: <input type="date" name='dataAgendamento'
                 value="{{ $atendimento->agendamento ? date('Y-m-d', strtotime($atendimento->agendamento)) : '' }}" required><br>
