@@ -14,6 +14,10 @@ class PlanosController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->rules_id === 4) {
+            abort(403, 'Acesso nao autorizado.');
+        }
+
         $planos = Planos::where('user_id', auth()->id())
             ->orderBy('nome', 'asc')->get();
 
@@ -66,6 +70,10 @@ class PlanosController extends Controller
      */
     public function show(Planos $plano)
     {
+        if (auth()->user()->rules_id === 4) {
+            abort(403, 'Acesso nao autorizado.');
+        }
+
         if ($plano->user_id !== auth()->id()) {
             abort(403, 'Acesso não autorizado.');
         }

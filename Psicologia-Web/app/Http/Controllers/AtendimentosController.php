@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Atendimentos;
 use App\Models\User;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 
 class AtendimentosController extends Controller
@@ -142,7 +143,7 @@ class AtendimentosController extends Controller
             abort(404);
         }
 
-        if (auth()->user()->rules_id === 4 && $atendimentos->paciente->id !== auth()->id()) {
+        if (auth()->user()->rules_id === 4) {
             abort(403, 'Acesso nao autorizado.');
         }
 
@@ -349,13 +350,42 @@ class AtendimentosController extends Controller
 
     public function agenda(Request $request)
     {
-        $weekStart = Carbon::parse($request->query('week', Carbon::now()))
-            ->startOfWeek(Carbon::MONDAY)
-            ->startOfDay();
-        $weekEnd = $weekStart->copy()->addDays(7);
+        $isPaciente = auth()->user()->rules_id === 4;
+        $from = $request->query('from');
+        $to = $request->query('to');
+
+        if ($from && $to) {
+            $rangeStart = Carbon::parse($from)->startOfDay();
+            $rangeEnd = Carbon::parse($to)->endOfDay();
+
+            if ($rangeStart->gt($rangeEnd)) {
+                [$rangeStart, $rangeEnd] = [$rangeEnd->copy()->startOfDay(), $rangeStart->copy()->endOfDay()];
+            }
+        } else {
+            $rangeStart = Carbon::parse($request->query('week', Carbon::now()))
+                ->startOfWeek(Carbon::MONDAY)
+                ->startOfDay();
+            $rangeEnd = $rangeStart->copy()->addDays(6)->endOfDay();
+        }
+
+        $weekStart = $rangeStart->copy()->startOfDay();
+        $rangeDays = $rangeStart->copy()->startOfDay()->diffInDays($rangeEnd->copy()->startOfDay()) + 1;
+
+        if ($from && $to) {
+            $prevStart = $rangeStart->copy()->subDays($rangeDays)->toDateString();
+            $prevEnd = $rangeEnd->copy()->subDays($rangeDays)->toDateString();
+            $nextStart = $rangeStart->copy()->addDays($rangeDays)->toDateString();
+            $nextEnd = $rangeEnd->copy()->addDays($rangeDays)->toDateString();
+
+            $prevParams = ['from' => $prevStart, 'to' => $prevEnd];
+            $nextParams = ['from' => $nextStart, 'to' => $nextEnd];
+        } else {
+            $prevParams = ['week' => $weekStart->copy()->subWeek()->toDateString()];
+            $nextParams = ['week' => $weekStart->copy()->addWeek()->toDateString()];
+        }
 
         $query = Atendimentos::with(['paciente.psicologo'])
-            ->whereBetween('agendamento', [$weekStart, $weekEnd])
+            ->whereBetween('agendamento', [$rangeStart, $rangeEnd])
             ->whereHas('paciente', function ($query) {
                 $query->where('rules_id', 4);
             });
@@ -364,7 +394,7 @@ class AtendimentosController extends Controller
             $query->whereHas('paciente', function ($query) {
                 $query->where('user_id', auth()->id());
             });
-        } elseif (auth()->user()->rules_id === 4) {
+        } elseif ($isPaciente) {
             $query->where('user_id', auth()->id());
         }
 
@@ -378,12 +408,32 @@ class AtendimentosController extends Controller
             $agenda[$dayKey][$hourKey][] = $atendimento;
         }
 
+        $pacienteAgenda = [];
+        if ($isPaciente) {
+            foreach ($atendimentos as $atendimento) {
+                $data = Carbon::parse($atendimento->agendamento);
+                $dayKey = $data->toDateString();
+                $pacienteAgenda[$dayKey][] = $atendimento;
+            }
+        }
+
+        $days = [];
+        foreach (CarbonPeriod::create($rangeStart->copy()->startOfDay(), $rangeEnd->copy()->startOfDay()) as $day) {
+            $days[] = $day->copy();
+        }
+
         return view('atendimentos.agenda', [
             'agenda' => $agenda,
             'weekStart' => $weekStart,
-            'weekEnd' => $weekEnd->copy()->subDay(),
+            'displayStart' => $rangeStart->copy()->startOfDay(),
+            'displayEnd' => $rangeEnd->copy()->endOfDay(),
+            'prevParams' => $prevParams,
+            'nextParams' => $nextParams,
+            'days' => $days,
             'isAdminOrAtendente' => in_array(auth()->user()->rules_id, [1, 3], true),
             'canEdit' => auth()->user()->rules_id !== 4,
+            'isPaciente' => $isPaciente,
+            'pacienteAgenda' => $pacienteAgenda,
         ]);
     }
 }

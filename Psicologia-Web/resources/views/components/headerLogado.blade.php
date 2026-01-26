@@ -14,6 +14,7 @@
                     <a href="{{route('logado')}}">Inicio</a>
                 </div>
             </li>
+            @if (auth()->user()->rules_id !== 4)
             <li>
                 <div class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="{{route('pacientes.index')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,6 +62,7 @@
                     </ul>
                 </div>
             </li>
+            @endif
             <li>
                 <div class="menuBarLogado">
                     <a href="{{route('atendimentos.agenda')}}">Agenda</a>

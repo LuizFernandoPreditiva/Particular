@@ -16,6 +16,10 @@ class PacientesController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->rules_id === 4) {
+            abort(403, 'Acesso nao autorizado.');
+        }
+
         if (auth()->user()->rules_id === 2) {
             $pacientes = User::where('rules_id', 4)
                 ->where('user_id', auth()->id())
@@ -190,6 +194,10 @@ class PacientesController extends Controller
      */
     public function pesquisar()
     {
+        if (auth()->user()->rules_id === 4) {
+            abort(403, 'Acesso nao autorizado.');
+        }
+
         return view('pacientes.pesquisar');
     }
 
@@ -201,6 +209,10 @@ class PacientesController extends Controller
      */
     public function buscar(Request $request)
     {
+        if (auth()->user()->rules_id === 4) {
+            abort(403, 'Acesso nao autorizado.');
+        }
+
         $nome = $request->input('nome');
 
         $query = User::where('rules_id', 4)->where('name', 'like', '%' . $nome . '%');
@@ -216,6 +228,10 @@ class PacientesController extends Controller
 
     public function ativo()
     {
+        if (auth()->user()->rules_id === 4) {
+            abort(403, 'Acesso nao autorizado.');
+        }
+
         $query = User::where('rules_id', 4)->where('status', 'ativo');
 
         if (auth()->user()->rules_id === 2) {
@@ -229,6 +245,10 @@ class PacientesController extends Controller
 
     public function alta()
     {
+        if (auth()->user()->rules_id === 4) {
+            abort(403, 'Acesso nao autorizado.');
+        }
+
         $query = User::where('rules_id', 4)->where('status', 'alta');
 
         if (auth()->user()->rules_id === 2) {
@@ -242,6 +262,10 @@ class PacientesController extends Controller
 
     public function inativo()
     {
+        if (auth()->user()->rules_id === 4) {
+            abort(403, 'Acesso nao autorizado.');
+        }
+
         $query = User::where('rules_id', 4)->where('status', 'inativo');
 
         if (auth()->user()->rules_id === 2) {
