@@ -2,18 +2,17 @@
 
 @section('main')
 
-    <div class="form-container">
+<x-section-card title="Buscar pagamentos" subtitle="Encontre pagamentos pelo nome do paciente.">
+    <form class="form-grid" action="{{ route('pagamentos.buscar') }}" method="get">
 
-        <h1>Pesquise pelo Nome:</h1>
+        <x-field label="Nome" for="nome">
+            <input id="nome" type="text" name="nome" class="form-input" required>
+        </x-field>
 
-        <form action="{{route('pagamentos.buscar')}}" method="post">
-            @csrf
-
-            Nome: <input type="text" name="nome" required><br><br>
-
-            <input  type="submit" value="Buscar">
-        </form>
-
-    </div>
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Buscar</button>
+        </div>
+    </form>
+</x-section-card>
 
 @endsection

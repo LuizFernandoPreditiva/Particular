@@ -2,15 +2,19 @@
 
 @section('main')
 
-    <div class="table-container">
+<x-section-card title="Clientes inativos" subtitle="Desistências registradas." class="table-card">
+    <x-slot name="actions">
+        <a class="btn-secondary" href="{{ route('clientes.index') }}">Voltar</a>
+    </x-slot>
 
+    <div class="table-scroll">
         <table>
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Telefone</th>
+                    <th>Registrado</th>
                     <th>Visualizar</th>
-                    <th>Serviços</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,15 +24,15 @@
                 <tr>
                     <td><?= $cl->nome ?></td>
                     <td><?= $cl->telefone ?></td>
-                    <td><a href="{{route('clientes.show', $cl->id )}}">Visualizar</a></td>
-                    <td><a href="">X</a></td>
+                    <td><?= date('d/m/Y', strtotime($cl->created_at)) ?></td>
+                    <td><a href="{{ route('clientes.show', $cl->id) }}">Visualizar</a></td>
                 </tr>
                 <?php
                     endforeach;
                 ?>
             </tbody>
         </table>
-
     </div>
+</x-section-card>
 
 @endsection

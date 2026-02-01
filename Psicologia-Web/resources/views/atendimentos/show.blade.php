@@ -2,31 +2,32 @@
 
 @section('main')
 
-    <div class="exibir-cliente">
-        <h1>Atendimento:</h1>
-        <p>
-            Paciente: {{$atendimento->paciente->name}}<br>
-            Agendado: {{ date('d/m/Y H:i', strtotime($atendimento->agendamento)) }}<br>
-            Atendido:
+<x-section-card title="Atendimento" subtitle="Detalhes do atendimento.">
+    <div class="info-list">
+        <div><strong>Paciente:</strong> {{ $atendimento->paciente->name }}</div>
+        <div><strong>Agendado:</strong> {{ date('d/m/Y H:i', strtotime($atendimento->agendamento)) }}</div>
+        <div><strong>Atendido:</strong>
             @if ($atendimento->falta == 1)
                 Faltou
             @elseif ($atendimento->atendido == null)
-                Nao atendido
+                Não atendido
             @else
                 {{ date('d/m/Y H:i', strtotime($atendimento->atendido)) }}
             @endif
-            <br>
-            Duracao: {{$atendimento->duracao}}<br>
-            Trabalho: {{$atendimento->trabalho}}<br>
-            Resumo: {{$atendimento->resumo}}<br>
-        </p>
+        </div>
+        <div><strong>Duração:</strong> {{ $atendimento->duracao }}</div>
+        <div><strong>Trabalho:</strong> {{ $atendimento->trabalho }}</div>
+        <div><strong>Resumo:</strong> {{ $atendimento->resumo }}</div>
+    </div>
 
-        <a class="btn btn-primary" href="{{route('atendimentos.edit', $atendimento->id )}}" role="button">Alterar</a>
-        <form action="{{route('atendimentos.destroy', $atendimento)}}" method="post">
+    <div class="form-actions">
+        <a class="btn-primary" href="{{ route('atendimentos.edit', $atendimento->id) }}">Alterar</a>
+        <form action="{{ route('atendimentos.destroy', $atendimento) }}" method="post">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-primary">Cancelar</button>
+            <button type="submit" class="btn-danger">Cancelar</button>
         </form>
     </div>
+</x-section-card>
 
 @endsection

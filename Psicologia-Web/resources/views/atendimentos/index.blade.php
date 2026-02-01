@@ -2,39 +2,50 @@
 
 @section('main')
 
-    <div class="table-container">
+<x-section-card title="Atendimentos" subtitle="Registros do paciente selecionado." class="table-card">
+    <x-slot name="actions">
+        <a class="btn-primary" href="{{ route('atendimentos.create') }}">Novo atendimento</a>
+        <a class="btn-secondary" href="{{ url()->previous() }}">Voltar</a>
+        <form method="GET" class="per-page-form">
+            @foreach (request()->except(['page', 'per_page']) as $key => $value)
+                <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+            @endforeach
+            <label for="per_page">Itens por página</label>
+            <input id="per_page" type="number" name="per_page" min="1" max="100" value="{{ request('per_page', 10) }}">
+            <button class="btn-secondary" type="submit">Aplicar</button>
+        </form>
+    </x-slot>
+
+    <div class="table-scroll">
         <table>
             <thead>
                 <tr>
                     <th>Paciente</th>
                     <th>Agendado</th>
                     <th>Atendido</th>
+                    <th>Duração</th>
+                    <th>Falta</th>
                     <th>Visualizar</th>
-                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($atendimentos as $atendimento): ?>
+                @foreach ($atendimentos as $atendimento)
                 <tr>
-                    <td><?= $atendimento->paciente->name ?></td>
-                    <td><?= date('d/m/Y H:i', strtotime($atendimento->agendamento)) ?></td>
-                    <td>
-                        <?php
-                            if ($atendimento->falta == 1) {
-                                echo 'Faltou';
-                            } elseif ($atendimento->atendido == null) {
-                                echo 'Nao atendido';
-                            } else {
-                                echo date('d/m/Y H:i', strtotime($atendimento->atendido));
-                            }
-                        ?>
-                    </td>
-                    <td><a href="{{route('atendimentos.show', $atendimento->id )}}">Ver</a></td>
-                    <td><a href="{{route('atendimentos.edit', $atendimento->id )}}">Editar</a></td>
+                    <td>{{ $atendimento->paciente ? $atendimento->paciente->name : 'Não informado' }}</td>
+                    <td>{{ $atendimento->agendamento ? date('d/m/Y H:i', strtotime($atendimento->agendamento)) : '-' }}</td>
+                    <td>{{ $atendimento->atendido ? date('d/m/Y H:i', strtotime($atendimento->atendido)) : '-' }}</td>
+                    <td>{{ $atendimento->duracao }}</td>
+                    <td>{{ $atendimento->falta ? 'Sim' : 'Não' }}</td>
+                    <td><a href="{{ route('atendimentos.show', $atendimento) }}">Detalhes</a></td>
                 </tr>
-                <?php endforeach; ?>
+                @endforeach
             </tbody>
         </table>
     </div>
+
+    <div class="table-meta">
+        {{ $atendimentos->links('pagination::bootstrap-4') }}
+    </div>
+</x-section-card>
 
 @endsection

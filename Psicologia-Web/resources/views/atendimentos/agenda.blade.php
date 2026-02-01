@@ -2,51 +2,50 @@
 
 @section('main')
 
-    <div class="agenda-container">
-        <div class="agenda-header">
-            <a class="btn btn-primary" href="{{ route('atendimentos.agenda', $prevParams) }}">Periodo anterior</a>
-            <div class="agenda-title">
-                <form class="agenda-range" method="GET" action="{{ route('atendimentos.agenda') }}">
-                    <span>De</span>
-                    <input type="date" name="from" value="{{ $displayStart->toDateString() }}">
-                    <span>ate</span>
-                    <input type="date" name="to" value="{{ $displayEnd->toDateString() }}">
-                    <button class="btn btn-primary" type="submit">Ir</button>
-                </form>
-            </div>
-            <a class="btn btn-primary" href="{{ route('atendimentos.agenda', $nextParams) }}">Proximo periodo</a>
-        </div>
+<x-section-card title="Agenda" subtitle="Visualize atendimentos por período.">
+    <div class="agenda-header">
+        <a class="btn-secondary" href="{{ route('atendimentos.agenda', $prevParams) }}">Período anterior</a>
+        <form class="agenda-range" method="GET" action="{{ route('atendimentos.agenda') }}">
+            <span>De</span>
+            <input type="date" name="from" value="{{ $displayStart->toDateString() }}">
+            <span>até</span>
+            <input type="date" name="to" value="{{ $displayEnd->toDateString() }}">
+            <button class="btn-primary" type="submit">Ir</button>
+        </form>
+        <a class="btn-secondary" href="{{ route('atendimentos.agenda', $nextParams) }}">Próximo período</a>
+    </div>
 
-        @if ($isPaciente)
-            <div class="agenda-paciente">
-                <?php foreach ($pacienteAgenda as $dayKey => $items): ?>
-                    <?php $dia = \Carbon\Carbon::parse($dayKey); ?>
-                    <div class="agenda-dia">
-                        <div class="agenda-dia-titulo">{{ $dia->format('d/m/Y') }}</div>
-                        <?php foreach ($items as $item): ?>
-                            <?php
-                                $statusClass = 'status-pendente';
-                                $statusTexto = 'Agendado';
-                                if ($item->falta == 1) {
-                                    $statusClass = 'status-falta';
-                                    $statusTexto = 'Falta';
-                                } elseif ($item->atendido != null) {
-                                    $statusClass = 'status-atendido';
-                                    $statusTexto = 'Atendido';
-                                }
-                                $hora = \Carbon\Carbon::parse($item->agendamento)->format('H:i');
-                            ?>
-                            <div class="agenda-item <?= $statusClass ?>">
-                                {{ $hora }} - {{ $statusTexto }}
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endforeach; ?>
-                @if (empty($pacienteAgenda))
-                    <div>Nenhum atendimento neste periodo.</div>
-                @endif
-            </div>
-        @else
+    @if ($isPaciente)
+        <div class="agenda-paciente">
+            <?php foreach ($pacienteAgenda as $dayKey => $items): ?>
+                <?php $dia = \Carbon\Carbon::parse($dayKey); ?>
+                <div class="agenda-dia">
+                    <div class="agenda-dia-titulo">{{ $dia->format('d/m/Y') }}</div>
+                    <?php foreach ($items as $item): ?>
+                        <?php
+                            $statusClass = 'status-pendente';
+                            $statusTexto = 'Agendado';
+                            if ($item->falta == 1) {
+                                $statusClass = 'status-falta';
+                                $statusTexto = 'Falta';
+                            } elseif ($item->atendido != null) {
+                                $statusClass = 'status-atendido';
+                                $statusTexto = 'Atendido';
+                            }
+                            $hora = \Carbon\Carbon::parse($item->agendamento)->format('H:i');
+                        ?>
+                        <div class="agenda-item <?= $statusClass ?>">
+                            {{ $hora }} - {{ $statusTexto }}
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+            @if (empty($pacienteAgenda))
+                <div>Nenhum atendimento neste período.</div>
+            @endif
+        </div>
+    @else
+        <div class="table-scroll">
             <table class="agenda-table">
                 <thead>
                     <tr>
@@ -89,27 +88,8 @@
                     <?php endfor; ?>
                 </tbody>
             </table>
-        @endif
-    </div>
-
-    <style>
-        .agenda-container { width: 100%; padding-top: 80px; }
-        .agenda-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; flex-wrap: wrap; }
-        .agenda-title { font-weight: bold; }
-        .agenda-range { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
-        .agenda-range input[type="date"] { padding: 4px; }
-        .agenda-paciente { display: grid; gap: 12px; }
-        .agenda-dia { border: 1px solid #ddd; border-radius: 6px; padding: 8px; background: #fff; }
-        .agenda-dia-titulo { font-weight: bold; margin-bottom: 6px; }
-        .agenda-table { width: 100%; border-collapse: collapse; }
-        .agenda-table th, .agenda-table td { border: 1px solid #ddd; padding: 6px; vertical-align: top; }
-        .agenda-hour { width: 70px; font-weight: bold; text-align: center; }
-        .agenda-cell { min-height: 48px; }
-        .agenda-item { display: block; color: inherit; text-decoration: none; padding: 4px 6px; margin-bottom: 4px; border-radius: 4px; font-size: 12px; }
-        .agenda-item:hover { text-decoration: underline; }
-        .status-falta { background: #f8d7da; border: 1px solid #f5c2c7; }
-        .status-atendido { background: #d1e7dd; border: 1px solid #badbcc; }
-        .status-pendente { background: #ffffff; border: 1px solid #ddd; }
-    </style>
+        </div>
+    @endif
+</x-section-card>
 
 @endsection

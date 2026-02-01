@@ -46,11 +46,9 @@ Route::get('/logado', function () {
 
 //-------------------Clientes-------------------
 
-Route::resource('/pacientes', PacientesController::class)->middleware(['auth']);
-
 Route::get('/pacientes/pesquisar/nome', [PacientesController::class, 'pesquisar'])->name('pacientes.pesquisar');
 
-Route::post('/pacientes/buscar', [PacientesController::class, 'buscar'])->name('pacientes.buscar')->middleware(['auth']);
+Route::match(['get', 'post'], '/pacientes/buscar', [PacientesController::class, 'buscar'])->name('pacientes.buscar')->middleware(['auth']);
 
 Route::get('/pacientes/status/ativo', [PacientesController::class, 'ativo'])->name('pacientes.ativo');
 
@@ -58,19 +56,21 @@ Route::get('/pacientes/status/alta', [PacientesController::class, 'alta'])->name
 
 Route::get('/pacientes/status/inativo', [PacientesController::class, 'inativo'])->name('pacientes.inativo');
 
+Route::resource('/pacientes', PacientesController::class)->middleware(['auth']);
+
 //-------------------End Clientes-------------------
 
 //-------------------Pagamentos-------------------
 
+Route::get('/pagamentos/pesquisar/nome', [PagamentosController::class, 'pesquisar'])->name('pagamentos.pesquisar')->middleware(['auth']);
+
+Route::match(['get', 'post'], '/pagamentos/buscar', [PagamentosController::class, 'buscar'])->name('pagamentos.buscar')->middleware(['auth']);
+
+Route::get('/pagamentos/historico/{paciente}', [PagamentosController::class, 'historico'])->name('pagamentos.historico')->middleware(['auth']);
+
 Route::get('/pagamentos/create/{id}', [PagamentosController::class, 'create'])->name('pagamentos.novo')->middleware(['auth']);
 
 Route::resource('/pagamentos', PagamentosController::class)->middleware(['auth']);
-
-Route::get('/pagamentos/pesquisar/nome', [PagamentosController::class, 'pesquisar'])->name('pagamentos.pesquisar')->middleware(['auth']);
-
-Route::post('/pagamentos/buscar', [PagamentosController::class, 'buscar'])->name('pagamentos.buscar')->middleware(['auth']);
-
-Route::get('/pagamentos/historico/{paciente}', [PagamentosController::class, 'historico'])->name('pagamentos.historico')->middleware(['auth']);
 
 //-------------------End Pagamentos-------------------
 

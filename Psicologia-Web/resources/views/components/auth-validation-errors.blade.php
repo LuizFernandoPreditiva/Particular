@@ -1,12 +1,12 @@
 @props(['errors'])
 
 @if ($errors->any())
-    <div {{ $attributes }}>
-        <div class="font-medium text-red-600">
+    <div {{ $attributes->merge(['class' => 'alert alert-error']) }}>
+        <div>
             {{ __('Ops! Algo deu errado.') }}
         </div>
 
-        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+        <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach

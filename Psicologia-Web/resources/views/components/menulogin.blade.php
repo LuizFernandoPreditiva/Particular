@@ -1,5 +1,5 @@
 <div class="menuLogin">
-    <a href="login">login</a>
+    <a href="{{ route('login') }}" class="btn-secondary">Entrar</a>
 </div>
 
 

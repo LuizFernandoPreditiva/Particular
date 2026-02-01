@@ -2,21 +2,21 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-application-logo class="auth-logo" />
             </a>
         </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
+        <div class="auth-message">
             {{ __('Obrigado por se cadastrar! Antes de comecar, confirme seu email clicando no link que enviamos. Se nao recebeu, enviaremos outro.') }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
+            <div class="alert alert-success">
                 {{ __('Um novo link de verificacao foi enviado para o email informado no cadastro.') }}
             </div>
         @endif
 
-        <div class="mt-4 flex items-center justify-between">
+        <div class="form-actions">
             <form method="POST" action="{{ route('verification.send') }}">
                 @csrf
 
@@ -30,7 +30,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <button type="submit" class="btn-secondary">
                     {{ __('Sair') }}
                 </button>
             </form>

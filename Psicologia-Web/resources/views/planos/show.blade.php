@@ -2,20 +2,21 @@
 
 @section('main')
 
-    <div class="exibir-cliente">
-        <h1>Plano:</h1>
-        <p>
-            Nome: {{$plano->nome}}<br>
-            Descricao: {{$plano->descricao}}<br>
-            Valor: {{$plano->valor}}<br>
-        </p>
+<x-section-card title="Plano" subtitle="Detalhes do plano.">
+    <div class="info-list">
+        <div><strong>Nome:</strong> {{ $plano->nome }}</div>
+        <div><strong>Descrição:</strong> {{ $plano->descricao }}</div>
+        <div><strong>Valor:</strong> {{ $plano->valor }}</div>
+    </div>
 
-        <a class="btn btn-primary" href="{{route('planos.edit', $plano->id )}}" role="button">Alterar</a>
-        <form action="{{route('planos.destroy', $plano)}}" method="post">
+    <div class="form-actions">
+        <a class="btn-primary" href="{{ route('planos.edit', $plano->id) }}">Alterar</a>
+        <form action="{{ route('planos.destroy', $plano) }}" method="post">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-primary">Deletar</button>
+            <button type="submit" class="btn-danger">Deletar</button>
         </form>
     </div>
+</x-section-card>
 
 @endsection

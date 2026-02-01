@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         <!--<meta name="csrf-token" content="{//{ csrf_token() }}">-->
         <!--<title>{{ config('app.name') }}</title>-->
-        <title>Natalia Psicologa</title>
+        <title>Natalia Psicóloga</title>
         <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-icon.png') }}">
     </head>
     <body>

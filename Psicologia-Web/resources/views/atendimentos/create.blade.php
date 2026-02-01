@@ -2,36 +2,68 @@
 
 @section('main')
 
-<div class="form-container">
-
-    <h1>Novo atendimento:</h1>
-
-    <form action="{{route('atendimentos.store')}}" method="post">
+<x-section-card title="Novo atendimento" subtitle="Registre um novo atendimento para o paciente.">
+    <form class="form-grid" action="{{ route('atendimentos.store') }}" method="post">
         @csrf
 
-        Paciente:
-        <select name="user_id">
-            <?php
-            foreach ($pacientes as $paciente):
-                $selecionado = request('user_id') == $paciente->id ? 'selected' : '';
-            ?>
-                <option value='{{$paciente->id}}' {{$selecionado}}>{{$paciente->name}}</option>
-            <?php
-            endforeach;
-            ?>
-        </select><br>
-        Data de agendamento: <input type="date" name='dataAgendamento' required><br>
-        Hora do agendamento: <input type="time" name='horaAgendamento' required><br>
-        Data do atendimento: <input type="date" name='dataAtendido'><br>
-        Hora do atendimento: <input type="time" name='horaAtendido'><br>
-        Duracao: <input type="number" name='duracao'><br>
-        Falta: <input type='checkbox' name='falta' value="1"><br>
-        Trabalho: <textarea name='trabalho' maxlength="1000" rows="4" cols="50"></textarea><br>
-        Resumo: <textarea name='resumo' maxlength="1000" rows="4" cols="50"></textarea><br>
+        <x-field label="Paciente" for="user_id">
+            <select id="user_id" name="user_id" class="form-input">
+                <?php
+                foreach ($pacientes as $paciente):
+                    $selecionado = request('user_id') == $paciente->id ? 'selected' : '';
+                ?>
+                    <option value='{{$paciente->id}}' {{$selecionado}}>{{$paciente->name}}</option>
+                <?php
+                endforeach;
+                ?>
+            </select>
+        </x-field>
 
-        <input  type="submit" value="Cadastrar">
+        <div class="form-row">
+            <x-field label="Data de agendamento" for="dataAgendamento">
+                <input id="dataAgendamento" type="date" name="dataAgendamento" class="form-input" required>
+            </x-field>
+
+            <x-field label="Hora do agendamento" for="horaAgendamento">
+                <input id="horaAgendamento" type="time" name="horaAgendamento" class="form-input" required>
+            </x-field>
+        </div>
+
+        <div class="form-row">
+            <x-field label="Data do atendimento" for="dataAtendido">
+                <input id="dataAtendido" type="date" name="dataAtendido" class="form-input">
+            </x-field>
+
+            <x-field label="Hora do atendimento" for="horaAtendido">
+                <input id="horaAtendido" type="time" name="horaAtendido" class="form-input">
+            </x-field>
+        </div>
+
+        <div class="form-row">
+            <x-field label="Duração (min)" for="duracao">
+                <input id="duracao" type="number" name="duracao" class="form-input">
+            </x-field>
+
+            <x-field label="Falta" for="falta">
+                <div class="checkbox-row">
+                    <input id="falta" type="checkbox" name="falta" value="1">
+                    <label for="falta">Marcar como falta</label>
+                </div>
+            </x-field>
+        </div>
+
+        <x-field label="Trabalho" for="trabalho">
+            <textarea id="trabalho" name="trabalho" maxlength="1000" rows="4" class="form-input"></textarea>
+        </x-field>
+
+        <x-field label="Resumo" for="resumo">
+            <textarea id="resumo" name="resumo" maxlength="1000" rows="4" class="form-input"></textarea>
+        </x-field>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Cadastrar</button>
+        </div>
     </form>
-
-</div>
+</x-section-card>
 
 @endsection

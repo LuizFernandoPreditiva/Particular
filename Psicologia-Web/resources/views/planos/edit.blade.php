@@ -2,21 +2,28 @@
 
 @section('main')
 
-    <div class="form-container">
+<x-section-card title="Editar plano" subtitle="Atualize as informacoes do plano.">
+    <form class="form-grid" action="{{ route('planos.update', $plano) }}" method="post">
+        @csrf
+        @method('PUT')
 
-        Alterar Plano:<br><br>
+        <x-field label="Nome" for="nome">
+            <input id="nome" type="text" name="nome" class="form-input" value="{{ $plano->nome }}" required>
+        </x-field>
 
-        <form action="{{route('planos.update', $plano)}}" method="post">
-            @csrf
-            @method('PUT')
+        <x-field label="Descrição" for="descricao">
+            <input id="descricao" type="text" name="descricao" class="form-input" value="{{ $plano->descricao }}" required>
+        </x-field>
 
-            nome: <input type="text" name="nome" value="{{$plano->nome}}" required><br><br>
-            Descricao: <input type="text" name="descricao" value="{{$plano->descricao}}" required><br><br>
-            Valor: <input type="number" name="valor" value="{{$plano->valor}}" required><br><br>
+        <x-field label="Valor" for="valor">
+            <input id="valor" type="number" name="valor" class="form-input" value="{{ $plano->valor }}" required>
+        </x-field>
 
-            <input  type="submit" value="Alterar">
-        </form>
-
-    </div>
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Salvar</button>
+            <a class="btn-secondary" href="{{ route('planos.index') }}">Voltar</a>
+        </div>
+    </form>
+</x-section-card>
 
 @endsection

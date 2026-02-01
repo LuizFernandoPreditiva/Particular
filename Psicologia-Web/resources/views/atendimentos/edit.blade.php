@@ -2,36 +2,63 @@
 
 @section('main')
 
-    <div class="form-container">
+<x-section-card title="Editar atendimento" subtitle="Atualize os dados do atendimento.">
+    <form class="form-grid" action="{{ route('atendimentos.update', $atendimento) }}" method="post">
+        @csrf
+        @method('PUT')
 
-        <form action="{{route('atendimentos.update', $atendimento )}}" method="post">
-            @csrf
-            @method('PUT')
+        <input type="hidden" name="user_id" value="{{ $atendimento->user_id }}">
 
-            <input type="hidden" name="user_id" value="{{$atendimento->user_id}}">
+        <div class="form-row">
+            <x-field label="Data de agendamento" for="dataAgendamento">
+                <input id="dataAgendamento" type="date" name="dataAgendamento" class="form-input"
+                    value="{{ $atendimento->agendamento ? date('Y-m-d', strtotime($atendimento->agendamento)) : '' }}" required>
+            </x-field>
 
-            Data de agendamento: <input type="date" name='dataAgendamento'
-                value="{{ $atendimento->agendamento ? date('Y-m-d', strtotime($atendimento->agendamento)) : '' }}" required><br>
-            Hora do agendamento: <input type="time" name='horaAgendamento'
-                value="{{ $atendimento->agendamento ? date('H:i', strtotime($atendimento->agendamento)) : '' }}" required><br>
-            Data do atendimento: <input type="date" name='dataAtendido'
-                value="{{ $atendimento->atendido ? date('Y-m-d', strtotime($atendimento->atendido)) : '' }}" ><br>
-            Hora do atendimento: <input type="time" name='horaAtendido'
-                value="{{ $atendimento->atendido ? date('H:i', strtotime($atendimento->atendido)) : '' }}"><br>
-            Duracao: <input type="number" name='duracao' value="{{$atendimento->duracao}}"><br>
-            Falta: <input type='checkbox' name='falta' value="1"
-                @if($atendimento->falta == 1)
-                checked
-                @endif
-            ><br>
-            Trabalho: <textarea name='trabalho' maxlength="1000" rows="4" cols="50">{{ $atendimento->trabalho }}</textarea><br>
-            Resumo: <textarea name='resumo' maxlength="1000" rows="4" cols="50">{{$atendimento->resumo}}</textarea><br>
+            <x-field label="Hora do agendamento" for="horaAgendamento">
+                <input id="horaAgendamento" type="time" name="horaAgendamento" class="form-input"
+                    value="{{ $atendimento->agendamento ? date('H:i', strtotime($atendimento->agendamento)) : '' }}" required>
+            </x-field>
+        </div>
 
-            <input  type="submit" value="Alterar">
-            <a class="btn btn-primary" href="{{ url()->previous() }}" role="button">Voltar</a>
+        <div class="form-row">
+            <x-field label="Data do atendimento" for="dataAtendido">
+                <input id="dataAtendido" type="date" name="dataAtendido" class="form-input"
+                    value="{{ $atendimento->atendido ? date('Y-m-d', strtotime($atendimento->atendido)) : '' }}">
+            </x-field>
 
-        </form>
+            <x-field label="Hora do atendimento" for="horaAtendido">
+                <input id="horaAtendido" type="time" name="horaAtendido" class="form-input"
+                    value="{{ $atendimento->atendido ? date('H:i', strtotime($atendimento->atendido)) : '' }}">
+            </x-field>
+        </div>
 
-    </div>
+        <div class="form-row">
+            <x-field label="Duração (min)" for="duracao">
+                <input id="duracao" type="number" name="duracao" class="form-input" value="{{ $atendimento->duracao }}">
+            </x-field>
+
+            <x-field label="Falta" for="falta">
+                <div class="checkbox-row">
+                    <input id="falta" type="checkbox" name="falta" value="1" @if($atendimento->falta == 1) checked @endif>
+                    <label for="falta">Marcar como falta</label>
+                </div>
+            </x-field>
+        </div>
+
+        <x-field label="Trabalho" for="trabalho">
+            <textarea id="trabalho" name="trabalho" maxlength="1000" rows="4" class="form-input">{{ $atendimento->trabalho }}</textarea>
+        </x-field>
+
+        <x-field label="Resumo" for="resumo">
+            <textarea id="resumo" name="resumo" maxlength="1000" rows="4" class="form-input">{{ $atendimento->resumo }}</textarea>
+        </x-field>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Salvar</button>
+            <a class="btn-secondary" href="{{ url()->previous() }}">Voltar</a>
+        </div>
+    </form>
+</x-section-card>
 
 @endsection

@@ -15,11 +15,13 @@ class AtendimentosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
+
+        $perPage = $this->perPage($request);
 
         $atendimentos = Atendimentos::whereHas('paciente', function ($query) {
             $query->where('rules_id', 4)
@@ -32,7 +34,8 @@ class AtendimentosController extends Controller
                 });
         })
             ->orderBy('agendamento', 'desc')
-            ->get();
+            ->paginate($perPage)
+            ->withQueryString();
 
         return view('atendimentos.index', compact('atendimentos'));
     }
@@ -45,10 +48,11 @@ class AtendimentosController extends Controller
     public function create()
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         $pacientes = User::where('rules_id', 4)
+            ->where('status', 'ativo')
             ->when(auth()->user()->rules_id === 2, function ($query) {
                 $query->where('user_id', auth()->id());
             })
@@ -67,7 +71,7 @@ class AtendimentosController extends Controller
     public function store(Request $request)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         $paciente = User::where('id', $request->input('user_id'))
@@ -75,7 +79,7 @@ class AtendimentosController extends Controller
             ->firstOrFail();
 
         if (auth()->user()->rules_id === 2 && $paciente->user_id !== auth()->id()) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         $dataAgendado = $request->input('dataAgendamento');
@@ -144,11 +148,11 @@ class AtendimentosController extends Controller
         }
 
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         if (auth()->user()->rules_id === 2 && $atendimentos->paciente->user_id !== auth()->id()) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         return view('atendimentos.show', ['atendimento' => $atendimentos]);
@@ -163,7 +167,7 @@ class AtendimentosController extends Controller
     public function edit(Atendimentos $atendimento)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         if ($atendimento->paciente->rules_id !== 4) {
@@ -171,7 +175,7 @@ class AtendimentosController extends Controller
         }
 
         if (auth()->user()->rules_id === 2 && $atendimento->paciente->user_id !== auth()->id()) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         return view('atendimentos.edit', compact('atendimento'));
@@ -187,7 +191,7 @@ class AtendimentosController extends Controller
     public function update(Request $request, Atendimentos $atendimento)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         if ($atendimento->paciente->rules_id !== 4) {
@@ -195,7 +199,7 @@ class AtendimentosController extends Controller
         }
 
         if (auth()->user()->rules_id === 2 && $atendimento->paciente->user_id !== auth()->id()) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         $dataAgendado = $request->input('dataAgendamento');
@@ -277,7 +281,7 @@ class AtendimentosController extends Controller
     public function destroy(Atendimentos $atendimento)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         if ($atendimento->paciente->rules_id !== 4) {
@@ -285,7 +289,7 @@ class AtendimentosController extends Controller
         }
 
         if (auth()->user()->rules_id === 2 && $atendimento->paciente->user_id !== auth()->id()) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         $paciente = User::findOrFail($atendimento->user_id);
@@ -323,27 +327,37 @@ class AtendimentosController extends Controller
 
         $atendimento->delete();
 
-        $atendimentos = Atendimentos::where('user_id', $paciente->id)->get();
+        $perPage = $this->perPage($request);
+
+        $atendimentos = Atendimentos::where('user_id', $paciente->id)
+            ->orderBy('agendamento', 'desc')
+            ->paginate($perPage)
+            ->withQueryString();
 
         return redirect()->route('atendimentos.registro', ['paciente' => $paciente, 'atendimentos' => $atendimentos]);
     }
 
-    public function registro(User $paciente)
+    public function registro(Request $request, User $paciente)
     {
         if ($paciente->rules_id != 4) {
             abort(404);
         }
 
         if (auth()->user()->rules_id === 2 && $paciente->user_id !== auth()->id()) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         // Busca os atendimentos do paciente
-        $atendimentos = Atendimentos::where('user_id', $paciente->id)->get();
+        $perPage = $this->perPage($request);
+
+        $atendimentos = Atendimentos::where('user_id', $paciente->id)
+            ->orderBy('agendamento', 'desc')
+            ->paginate($perPage)
+            ->withQueryString();
 
         return view('atendimentos.registro', ['paciente' => $paciente, 'atendimentos' => $atendimentos]);
     }

@@ -14,21 +14,25 @@ class PacientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
+
+        $perPage = $this->perPage($request);
 
         if (auth()->user()->rules_id === 2) {
             $pacientes = User::where('rules_id', 4)
                 ->where('user_id', auth()->id())
                 ->orderBy('name', 'asc')
-                ->get();
+                ->paginate($perPage)
+                ->withQueryString();
         } else {
             $pacientes = User::where('rules_id', 4)
                 ->orderBy('name', 'asc')
-                ->get();
+                ->paginate($perPage)
+                ->withQueryString();
         }
 
         return view('pacientes.index', ['pacientes' => $pacientes]);
@@ -42,7 +46,7 @@ class PacientesController extends Controller
     public function create()
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         $psicologos = [];
@@ -68,10 +72,34 @@ class PacientesController extends Controller
     public function store(Request $request)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
-        $data = $request->all();
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|min:6',
+            'cpf' => 'nullable|string|max:20',
+            'telefone' => 'nullable|string|max:20',
+            'endereco' => 'nullable|string|max:255',
+            'cidade' => 'nullable|string|max:100',
+            'estado' => 'nullable|string|max:100',
+            'status' => 'required|in:ativo,alta,inativo',
+            'planos_id' => 'nullable|exists:planos,id',
+            'user_id' => 'nullable|exists:users,id',
+        ], [], [
+            'name' => 'nome',
+            'email' => 'e-mail',
+            'password' => 'senha',
+            'cpf' => 'CPF',
+            'telefone' => 'telefone',
+            'endereco' => 'endereço',
+            'cidade' => 'cidade',
+            'estado' => 'estado',
+            'status' => 'status',
+            'planos_id' => 'plano',
+            'user_id' => 'psicólogo',
+        ]);
         $data['rules_id'] = 4;
         $data['saldo'] = 0;
         $data['atendimentos'] = 0;
@@ -84,7 +112,7 @@ class PacientesController extends Controller
             $psicologoValido = User::where('id', $psicologoId)->where('rules_id', 2)->exists();
 
             if (!$psicologoValido) {
-                abort(403, 'Acesso nao autorizado.');
+                abort(403, 'Acesso não autorizado.');
             }
 
             $data['user_id'] = $psicologoId;
@@ -145,7 +173,31 @@ class PacientesController extends Controller
     {
         $this->autorizarPaciente($paciente);
 
-        $data = $request->all();
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $paciente->id,
+            'password' => 'nullable|string|min:6',
+            'cpf' => 'nullable|string|max:20',
+            'telefone' => 'nullable|string|max:20',
+            'endereco' => 'nullable|string|max:255',
+            'cidade' => 'nullable|string|max:100',
+            'estado' => 'nullable|string|max:100',
+            'status' => 'required|in:ativo,alta,inativo',
+            'planos_id' => 'nullable|exists:planos,id',
+            'user_id' => 'nullable|exists:users,id',
+        ], [], [
+            'name' => 'nome',
+            'email' => 'e-mail',
+            'password' => 'senha',
+            'cpf' => 'CPF',
+            'telefone' => 'telefone',
+            'endereco' => 'endereço',
+            'cidade' => 'cidade',
+            'estado' => 'estado',
+            'status' => 'status',
+            'planos_id' => 'plano',
+            'user_id' => 'psicólogo',
+        ]);
         $data['rules_id'] = 4;
 
         if (auth()->user()->rules_id === 2) {
@@ -155,7 +207,7 @@ class PacientesController extends Controller
             $psicologoValido = User::where('id', $psicologoId)->where('rules_id', 2)->exists();
 
             if (!$psicologoValido) {
-                abort(403, 'Acesso nao autorizado.');
+                abort(403, 'Acesso não autorizado.');
             }
 
             $data['user_id'] = $psicologoId;
@@ -195,7 +247,7 @@ class PacientesController extends Controller
     public function pesquisar()
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         return view('pacientes.pesquisar');
@@ -210,9 +262,10 @@ class PacientesController extends Controller
     public function buscar(Request $request)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
+        $perPage = $this->perPage($request);
         $nome = $request->input('nome');
 
         $query = User::where('rules_id', 4)->where('name', 'like', '%' . $nome . '%');
@@ -221,58 +274,69 @@ class PacientesController extends Controller
             $query->where('user_id', auth()->id());
         }
 
-        $pacientes = $query->get();
+        $pacientes = $query->orderBy('name', 'asc')
+            ->paginate($perPage)
+            ->appends(['nome' => $nome, 'per_page' => $perPage]);
 
         return view('pacientes.busca', ['pacientes' => $pacientes]);
     }
 
-    public function ativo()
+    public function ativo(Request $request)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
+        $perPage = $this->perPage($request);
         $query = User::where('rules_id', 4)->where('status', 'ativo');
 
         if (auth()->user()->rules_id === 2) {
             $query->where('user_id', auth()->id());
         }
 
-        $pacientes = $query->get();
+        $pacientes = $query->orderBy('name', 'asc')
+            ->paginate($perPage)
+            ->withQueryString();
 
         return view('pacientes.ativo', ['pacientes' => $pacientes]);
     }
 
-    public function alta()
+    public function alta(Request $request)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
+        $perPage = $this->perPage($request);
         $query = User::where('rules_id', 4)->where('status', 'alta');
 
         if (auth()->user()->rules_id === 2) {
             $query->where('user_id', auth()->id());
         }
 
-        $pacientes = $query->get();
+        $pacientes = $query->orderBy('name', 'asc')
+            ->paginate($perPage)
+            ->withQueryString();
 
         return view('pacientes.alta', ['pacientes' => $pacientes]);
     }
 
-    public function inativo()
+    public function inativo(Request $request)
     {
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
+        $perPage = $this->perPage($request);
         $query = User::where('rules_id', 4)->where('status', 'inativo');
 
         if (auth()->user()->rules_id === 2) {
             $query->where('user_id', auth()->id());
         }
 
-        $pacientes = $query->get();
+        $pacientes = $query->orderBy('name', 'asc')
+            ->paginate($perPage)
+            ->withQueryString();
 
         return view('pacientes.inativo', ['pacientes' => $pacientes]);
     }
@@ -284,11 +348,11 @@ class PacientesController extends Controller
         }
 
         if (auth()->user()->rules_id === 2 && $paciente->user_id !== auth()->id()) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
 
         if (auth()->user()->rules_id === 4) {
-            abort(403, 'Acesso nao autorizado.');
+            abort(403, 'Acesso não autorizado.');
         }
     }
 }
