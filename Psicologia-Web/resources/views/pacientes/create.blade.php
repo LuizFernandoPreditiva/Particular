@@ -84,9 +84,9 @@
         <div class="form-row">
             <x-field label="Status" for="status">
                 <select id="status" name="status" class="form-input @error('status') is-invalid @enderror">
-                    <option value="ativo" @selected(old('status') === 'ativo')>Em atendimento</option>
-                    <option value="alta" @selected(old('status') === 'alta')>De alta</option>
-                    <option value="inativo" @selected(old('status') === 'inativo')>Desist?ncia</option>
+                    <option value="ativo" {{ old('status') === 'ativo' ? 'selected' : '' }}>Em atendimento</option>
+                    <option value="alta" {{ old('status') === 'alta' ? 'selected' : '' }}>De alta</option>
+                    <option value="inativo" {{ old('status') === 'inativo' ? 'selected' : '' }}>Desistência</option>
                 </select>
                 @error('status')
                     <span class="error-text">{{ $message }}</span>
@@ -99,7 +99,7 @@
                 <x-field label="Psic?logo" for="user_id">
                     <select id="user_id" name="user_id" class="form-input @error('user_id') is-invalid @enderror" required>
                         @foreach ($psicologos as $index => $psicologo)
-                            <option value="{{ $psicologo->id }}" @selected((int) old('user_id', $index === 0 ? $psicologo->id : null) === $psicologo->id)>
+                            <option value="{{ $psicologo->id }}" {{ (int) old('user_id', $index === 0 ? $psicologo->id : null) === $psicologo->id ? 'selected' : '' }}>
                                 {{ $psicologo->name }}
                             </option>
                         @endforeach
@@ -114,7 +114,7 @@
         <x-field label="Plano" for="planos_id">
             <select id="planos_id" name="planos_id" class="form-input @error('planos_id') is-invalid @enderror">
                 @foreach ($planos as $index => $plano)
-                    <option value="{{ $plano->id }}" @selected((int) old('planos_id', $index === 0 ? $plano->id : null) === $plano->id)>
+                    <option value="{{ $plano->id }}" {{ (int) old('planos_id', $index === 0 ? $plano->id : null) === $plano->id ? 'selected' : '' }}>
                         {{ $plano->nome }}
                     </option>
                 @endforeach
